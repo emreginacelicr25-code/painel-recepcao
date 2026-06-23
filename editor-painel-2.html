@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Editor do Painel — Secretaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --preto:#1a1008;
+  --ama:#FFD700;--ama2:#FFC200;
+  --vm:#D32F2F;--vm2:#E53935;
+  --az:#1565C0;--az2:#1976D2;
+  --vd:#2E7D32;--vd2:#43A047;
+  --la:#E65100;--la2:#F57C00;
+  --rx:#6A1B9A;--rx2:#7B1FA2;
+  --creme:#FFFDE7;--creme2:#FFF9C4;
+  --papel:#FAFAFA;
+  --borda:2px solid var(--preto);
+  --borda3:3px solid var(--preto);
+  --s:3px 3px 0 var(--preto);
+  --bg:#FFF8E1;
+  --card:#fff;
+  --cinza:#f5f5f5;
+  --txt:#1a1008;--txt2:#666;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;background:var(--bg);color:var(--txt);font-family:'Nunito',sans-serif}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 6L6 0' stroke='rgba(0,0,0,0.04)' stroke-width='1'/%3E%3C/svg%3E")}
+
+/* ── LOGIN ── */
+#login{position:fixed;inset:0;background:var(--ama);display:flex;align-items:center;justify-content:center;z-index:9999;border:var(--borda3)}
+.login-box{
+  background:var(--card);border:var(--borda3);border-radius:4px;
+  padding:40px;width:380px;text-align:center;box-shadow:6px 6px 0 var(--preto);
+  position:relative;
+}
+.login-box::before{
+  content:'SECRETARIA';position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--vm2);color:#fff;font-family:'Bangers',cursive;
+  font-size:13px;letter-spacing:0.2em;padding:2px 18px;
+  border:var(--borda);white-space:nowrap;
+}
+.login-box .emojis{font-size:42px;margin-bottom:10px}
+.login-box h2{font-family:'Bangers',cursive;font-size:28px;color:var(--vm2);letter-spacing:0.05em;margin-bottom:4px}
+.login-box p{font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:22px}
+.login-box input{
+  width:100%;border:var(--borda3);border-radius:3px;
+  padding:12px 14px;font-size:15px;font-family:'Nunito',sans-serif;font-weight:700;
+  outline:none;background:var(--creme2);margin-bottom:10px;
+  box-shadow:inset 2px 2px 0 rgba(0,0,0,0.08);
+}
+.login-box input:focus{border-color:var(--vm2)}
+.btn-entrar{
+  width:100%;background:var(--vm2);color:#fff;border:var(--borda3);
+  border-radius:3px;padding:13px;font-size:16px;font-weight:800;
+  cursor:pointer;font-family:'Bangers',cursive;letter-spacing:0.08em;
+  box-shadow:var(--s);transition:all 0.1s;
+}
+.btn-entrar:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--preto)}
+.btn-entrar:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--preto)}
+.login-erro{color:var(--vm2);font-size:13px;font-weight:800;margin-top:8px;min-height:18px}
+
+/* ── APP ── */
+#app{display:none;position:relative;z-index:1}
+
+header{
+  background:var(--ama);border-bottom:var(--borda3);
+  padding:0 24px;height:66px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 3px 0 var(--preto);
+}
+.marca{display:flex;align-items:center;gap:14px}
+.marca-badge{
+  background:var(--vm2);border:var(--borda);border-radius:3px;
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  font-size:22px;box-shadow:var(--s);flex-shrink:0;
+}
+.marca-txt h1{font-family:'Bangers',cursive;font-size:20px;color:var(--preto);letter-spacing:0.05em;line-height:1}
+.marca-txt span{font-size:11px;font-weight:700;color:var(--preto);opacity:0.6;letter-spacing:0.08em}
+.btn-pub{
+  background:var(--vd);color:#fff;border:var(--borda3);
+  border-radius:3px;padding:10px 22px;
+  font-family:'Bangers',cursive;font-weight:400;font-size:16px;letter-spacing:0.1em;
+  cursor:pointer;display:flex;align-items:center;gap:8px;
+  box-shadow:var(--s);transition:all 0.1s;
+}
+.btn-pub:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--preto)}
+.btn-pub:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--preto)}
+.btn-pub:disabled{opacity:0.5;pointer-events:none}
+
+.layout{display:flex;min-height:calc(100vh - 66px)}
+
+/* ── NAV ── */
+nav{
+  width:230px;background:var(--card);border-right:var(--borda3);
+  padding:16px 0;position:sticky;top:66px;
+  height:calc(100vh - 66px);overflow-y:auto;
+}
+.nav-titulo{
+  font-family:'Bangers',cursive;font-size:11px;letter-spacing:0.25em;
+  color:var(--txt2);text-transform:uppercase;padding:16px 18px 6px;
+}
+nav a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 18px;color:var(--txt2);text-decoration:none;
+  font-size:14px;font-weight:800;cursor:pointer;
+  transition:all 0.1s;border-left:4px solid transparent;
+}
+nav a:hover{background:var(--creme2);color:var(--preto)}
+nav a.on{color:var(--vm2);border-left-color:var(--vm2);background:var(--creme2)}
+nav a .ni{
+  width:32px;height:32px;border-radius:3px;border:var(--borda);
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  flex-shrink:0;background:var(--creme2);box-shadow:1px 1px 0 var(--preto);
+}
+nav a.on .ni{background:var(--vm2);border-color:var(--preto)}
+
+/* ── CONTEÚDO ── */
+.content{flex:1;padding:24px;max-width:900px}
+.sec{display:none}
+.sec.on{display:block}
+
+.sec-hdr{
+  display:flex;align-items:center;gap:12px;
+  background:var(--card);border:var(--borda3);border-radius:3px;
+  padding:12px 18px;margin-bottom:6px;
+  box-shadow:var(--s);
+}
+.sec-hdr .sh-emoji{font-size:28px}
+.sec-hdr h2{font-family:'Bangers',cursive;font-size:24px;color:var(--preto);letter-spacing:0.04em}
+.sec-desc{font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:18px;padding-left:4px}
+
+/* ── LISTA ── */
+.lista{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.item{
+  background:var(--card);border:var(--borda3);border-radius:3px;
+  padding:12px 14px;display:flex;align-items:center;gap:12px;
+  box-shadow:2px 2px 0 var(--preto);
+}
+.item-body{flex:1}
+.item-titulo{font-weight:800;font-size:15px;color:var(--preto);margin-bottom:3px}
+.item-sub{font-size:12px;font-weight:700;color:var(--txt2)}
+.btn-del{
+  background:var(--vm2);color:#fff;border:var(--borda);
+  border-radius:3px;padding:6px 12px;font-size:12px;font-weight:800;
+  cursor:pointer;font-family:'Bangers',cursive;letter-spacing:0.05em;
+  box-shadow:2px 2px 0 var(--preto);transition:all 0.1s;flex-shrink:0;
+}
+.btn-del:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--preto)}
+.btn-del:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--preto)}
+.sel-status{
+  background:var(--creme2);border:var(--borda);border-radius:3px;
+  padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer;
+  font-family:'Nunito',sans-serif;outline:none;box-shadow:1px 1px 0 var(--preto);
+}
+
+/* ── FORM ADD ── */
+.form-add{
+  background:var(--card);border:var(--borda3);border-radius:3px;
+  padding:20px;box-shadow:var(--s);
+  border-top:5px solid var(--vm2);
+}
+.form-add h3{
+  font-family:'Bangers',cursive;font-size:18px;color:var(--vm2);
+  letter-spacing:0.06em;margin-bottom:16px;
+}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.fg{display:flex;flex-direction:column;gap:5px;flex:1;min-width:150px}
+.fg label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--txt2)}
+.fg input,.fg select,.fg textarea{
+  border:var(--borda3);border-radius:3px;padding:10px 12px;
+  font-size:14px;font-family:'Nunito',sans-serif;font-weight:700;
+  outline:none;background:var(--creme2);color:var(--preto);
+  box-shadow:inset 1px 1px 0 rgba(0,0,0,0.08);transition:border-color 0.15s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--vm2);background:#fff}
+.fg textarea{resize:vertical;min-height:80px}
+.fg select option{background:#fff}
+.btn-add{
+  background:var(--vd);color:#fff;border:var(--borda3);
+  border-radius:3px;padding:11px 22px;
+  font-family:'Bangers',cursive;font-size:16px;letter-spacing:0.08em;
+  cursor:pointer;box-shadow:var(--s);transition:all 0.1s;
+}
+.btn-add:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--preto)}
+.btn-add:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--preto)}
+
+/* ── RANGE ── */
+.range-wrap{display:flex;align-items:center;gap:10px}
+.range-wrap input[type=range]{flex:1;accent-color:var(--vm2);height:6px}
+.rv{min-width:40px;font-family:'Bangers',cursive;font-size:18px;color:var(--vm2)}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--vd);color:#fff;border:var(--borda3);
+  padding:12px 26px;border-radius:3px;
+  font-family:'Bangers',cursive;font-size:16px;letter-spacing:0.08em;
+  opacity:0;transition:all 0.3s;z-index:9999;pointer-events:none;
+  box-shadow:4px 4px 0 var(--preto);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.vazio-box{
+  background:var(--cinza);border:2px dashed #ccc;border-radius:3px;
+  padding:18px;text-align:center;
+  font-family:'Bangers',cursive;font-size:16px;color:#bbb;letter-spacing:0.05em;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <div class="emojis">🐰🍉👦🐶</div>
+    <h2>Painel Digital — Secretaria</h2>
+    <p>E. M. Regina Celi da Silva Cerdeira<br>Projeto: 90 Anos de Maurício de Sousa</p>
+    <input type="password" id="senha" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')login()">
+    <button class="btn-entrar" onclick="login()">★ ENTRAR ★</button>
+    <div class="login-erro" id="err"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header>
+    <div class="marca">
+      <div class="marca-badge">🏫</div>
+      <div class="marca-txt">
+        <h1>Editor do Painel Digital</h1>
+        <span>E. M. REGINA CELI · SECRETARIA ESCOLAR · 90 ANOS DE MAURÍCIO DE SOUSA</span>
+      </div>
+    </div>
+    <button class="btn-pub" id="btn-pub" onclick="salvar()">🚀 PUBLICAR NA TV</button>
+  </header>
+
+  <div class="layout">
+    <nav>
+      <div class="nav-titulo">Seções do Painel</div>
+      <a onclick="ativ('docs')" id="nav-docs" class="on">
+        <div class="ni">🐰</div>Documentos
+      </a>
+      <a onclick="ativ('copias')" id="nav-copias">
+        <div class="ni">👦</div>Cópias
+      </a>
+      <a onclick="ativ('avisos')" id="nav-avisos">
+        <div class="ni">🍉</div>Avisos
+      </a>
+      <a onclick="ativ('eventos')" id="nav-eventos">
+        <div class="ni">🐶</div>Calendário
+      </a>
+      <a onclick="ativ('campanhas')" id="nav-campanhas">
+        <div class="ni">🔬</div>Campanhas
+      </a>
+      <a onclick="ativ('sme')" id="nav-sme">
+        <div class="ni">📚</div>Cal. SME
+      </a>
+      <a onclick="ativ('fotos')" id="nav-fotos">
+        <div class="ni">📸</div>Fotos
+      </a>
+      <div class="nav-titulo">Config.</div>
+      <a onclick="ativ('ticker')" id="nav-ticker">
+        <div class="ni">📢</div>Rodapé
+      </a>
+    </nav>
+
+    <div class="content">
+
+      <!-- DOCS -->
+      <div class="sec on" id="sec-docs">
+        <div class="sec-hdr"><span class="sh-emoji">🐰</span><h2>Documentos Solicitados</h2></div>
+        <p class="sec-desc">A Mônica cuida de tudo! Gerencie as solicitações e atualize o status diretamente na lista.</p>
+        <div class="lista" id="lista-docs"></div>
+        <div class="form-add">
+          <h3>+ NOVA SOLICITAÇÃO</h3>
+          <div class="row">
+            <div class="fg"><label>Nome do(a) Aluno(a)</label><input id="d-aluno" placeholder="Ex.: João da Silva"></div>
+            <div class="fg"><label>Tipo de Documento</label>
+              <select id="d-tipo">
+                <option value="">Selecione...</option>
+                <option>Declaração de Matrícula</option>
+                <option>Declaração Bolsa Família</option>
+                <option>Declaração de Frequência</option>
+                <option>Relatório de Aprendizagem</option>
+                <option>Histórico Escolar</option>
+                <option>Transferência Escolar</option>
+                <option>Atestado de Escolaridade</option>
+                <option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="fg"><label>Data da Solicitação</label><input id="d-data" type="date"></div>
+            <div class="fg"><label>Status</label>
+              <select id="d-status">
+                <option value="aguard">⏳ Em andamento</option>
+                <option value="prof">📋 Aguardando Professor</option>
+                <option value="assin">✍️ Aguardando Assinatura</option>
+                <option value="pronto">✓ Pronto para Retirada</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addDoc()">📄 ADICIONAR</button>
+        </div>
+      </div>
+
+      <!-- CÓPIAS -->
+      <div class="sec" id="sec-copias">
+        <div class="sec-hdr"><span class="sh-emoji">👦</span><h2>Fila de Cópias</h2></div>
+        <p class="sec-desc">O Cebolinha tá na fila! Solicite com no mínimo 2 dias de antecedência.</p>
+        <div class="lista" id="lista-copias"></div>
+        <div class="form-add">
+          <h3>+ NOVA SOLICITAÇÃO DE CÓPIA</h3>
+          <div class="row">
+            <div class="fg"><label>Professor(a)</label><input id="c-prof" placeholder="Nome do professor"></div>
+            <div class="fg"><label>Turma</label><input id="c-turma" placeholder="Ex.: 3º A"></div>
+          </div>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Descrição do Material</label><input id="c-desc" placeholder="Ex.: Atividade — A Turma da Mônica e os Números"></div>
+            <div class="fg"><label>Qtd.</label><input id="c-qtd" type="number" min="1" placeholder="30"></div>
+          </div>
+          <div class="row">
+            <div class="fg"><label>Status</label>
+              <select id="c-status">
+                <option value="fila">Na fila de espera</option>
+                <option value="processo">Em processo</option>
+                <option value="pronto">✓ Pronto</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addCopia()">🖨️ ADICIONAR</button>
+        </div>
+      </div>
+
+      <!-- AVISOS -->
+      <div class="sec" id="sec-avisos">
+        <div class="sec-hdr"><span class="sh-emoji">🍉</span><h2>Mural de Avisos</h2></div>
+        <p class="sec-desc">A Magali compartilha tudo! Publique comunicados, orientações, protocolos e circulares.</p>
+        <div class="lista" id="lista-avisos"></div>
+        <div class="form-add">
+          <h3>+ NOVO AVISO</h3>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Título</label><input id="a-titulo" placeholder="Ex.: 🥗 Alimentação Saudável — Proibição de Ultraprocessados"></div>
+            <div class="fg"><label>Tipo</label>
+              <select id="a-tipo">
+                <option value="">Padrão</option>
+                <option value="urgente">🔴 Urgente</option>
+                <option value="info">🔵 Informativo</option>
+                <option value="evento">🟣 Evento</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Texto</label><textarea id="a-texto" placeholder="Descreva o aviso..."></textarea></div>
+            <div class="fg"><label>Data</label><input id="a-data" type="date"></div>
+          </div>
+          <button class="btn-add" onclick="addAviso()">📌 PUBLICAR</button>
+        </div>
+      </div>
+
+      <!-- EVENTOS -->
+      <div class="sec" id="sec-eventos">
+        <div class="sec-hdr"><span class="sh-emoji">🐶</span><h2>Calendário do Bimestre</h2></div>
+        <p class="sec-desc">O Cascão não gosta de banho, mas ama eventos! Adicione as datas pedagógicas.</p>
+        <div class="lista" id="lista-eventos"></div>
+        <div class="form-add">
+          <h3>+ NOVO EVENTO</h3>
+          <div class="row">
+            <div class="fg"><label>Data (dd/mm/aaaa)</label><input id="e-data" placeholder="18/07/2026"></div>
+            <div class="fg" style="flex:2"><label>Nome do Evento</label><input id="e-titulo" placeholder="Ex.: 🎪 Festa Junina — Arraial da Mônica!"></div>
+          </div>
+          <div class="row">
+            <div class="fg"><label>Descrição (opcional)</label><input id="e-desc" placeholder="Mais detalhes..."></div>
+          </div>
+          <button class="btn-add" onclick="addEvento()">📅 ADICIONAR</button>
+        </div>
+      </div>
+
+      <!-- CAMPANHAS -->
+      <div class="sec" id="sec-campanhas">
+        <div class="sec-hdr"><span class="sh-emoji">🔬</span><h2>Campanhas e Eventos</h2></div>
+        <p class="sec-desc">O Franjinha calculou tudo! Divulgue a Festa Junina, Gincana Inclusiva, arrecadações e mais.</p>
+        <div class="lista" id="lista-campanhas"></div>
+        <div class="form-add">
+          <h3>+ NOVA CAMPANHA</h3>
+          <div class="row">
+            <div class="fg" style="max-width:90px"><label>Emoji</label><input id="cp-emoji" placeholder="🎪" maxlength="4" style="font-size:22px;text-align:center"></div>
+            <div class="fg" style="flex:2"><label>Título</label><input id="cp-titulo" placeholder="Ex.: Gincana Inclusiva 2026 — Turma da Mônica!"></div>
+          </div>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Descrição</label><textarea id="cp-desc" placeholder="Como participar, o que arrecadar..."></textarea></div>
+            <div class="fg">
+              <label>Prazo</label><input id="cp-prazo" placeholder="Ex.: 18 de julho">
+              <label style="margin-top:10px">Progresso (%)</label>
+              <div class="range-wrap">
+                <input type="range" id="cp-prog" min="0" max="100" value="0" oninput="document.getElementById('rvv').textContent=this.value+'%'">
+                <span class="rv" id="rvv">0%</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addCampanha()">🎉 ADICIONAR</button>
+        </div>
+      </div>
+
+      <!-- SME -->
+      <div class="sec" id="sec-sme">
+        <div class="sec-hdr"><span class="sh-emoji">📚</span><h2>Calendário Oficial SME</h2></div>
+        <p class="sec-desc">Datas oficiais da Rede Municipal: bimestres, conselhos, feriados, formações e recessos.</p>
+        <div class="lista" id="lista-sme"></div>
+        <div class="form-add">
+          <h3>+ NOVA DATA OFICIAL</h3>
+          <div class="row">
+            <div class="fg"><label>Data (dd/mm/aaaa)</label><input id="sm-data" placeholder="06/07/2026"></div>
+            <div class="fg" style="flex:2"><label>Título</label><input id="sm-titulo" placeholder="Ex.: Início do Recesso Escolar"></div>
+          </div>
+          <div class="row">
+            <div class="fg"><label>Tipo</label>
+              <select id="sm-tipo">
+                <option>Início de Bimestre</option><option>Fim de Bimestre</option>
+                <option>Conselho de Classe</option><option>Formação / HTPC</option>
+                <option>Recesso Escolar</option><option>Feriado Municipal</option>
+                <option>Feriado Nacional</option><option>Reunião Pedagógica</option>
+                <option>Entrega de Boletins</option><option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addSME()">🏫 ADICIONAR</button>
+        </div>
+      </div>
+
+      <!-- FOTOS -->
+      <div class="sec" id="sec-fotos">
+        <div class="sec-hdr"><span class="sh-emoji">📸</span><h2>Fotos das Atividades</h2></div>
+        <p class="sec-desc">Cole URLs de imagens para o painel de fotos. Use Google Fotos, Drive ou qualquer link direto.</p>
+        <div class="lista" id="lista-fotos"></div>
+        <div class="form-add">
+          <h3>+ NOVA FOTO</h3>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>URL da Imagem</label><input id="f-url" placeholder="https://..."></div>
+            <div class="fg"><label>Legenda</label><input id="f-leg" placeholder="Ex.: Dia da Consciência Negra — Turma 3A"></div>
+          </div>
+          <button class="btn-add" onclick="addFoto()">📸 ADICIONAR</button>
+        </div>
+      </div>
+
+      <!-- TICKER -->
+      <div class="sec" id="sec-ticker">
+        <div class="sec-hdr"><span class="sh-emoji">📢</span><h2>Texto do Rodapé</h2></div>
+        <p class="sec-desc">Mensagem que rola continuamente na faixa amarela inferior da TV.</p>
+        <div class="form-add">
+          <h3>✏️ EDITAR RODAPÉ</h3>
+          <div class="fg" style="margin-bottom:16px">
+            <label>Mensagem</label>
+            <textarea id="ticker-txt" rows="3" placeholder="Ex.: E. M. Regina Celi — 90 Anos de Maurício de Sousa ★ Gibi como Ferramenta de Inclusão!"></textarea>
+          </div>
+          <button class="btn-add" onclick="salvarTicker()">💾 SALVAR RODAPÉ</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="toast">★ PUBLICADO! A TV atualiza em até 30 segundos</div>
+
+<script>
+const SENHA='cerdeira2026';
+const KEY='painel_regina_celi_v1';
+let D={docs:[],copias:[],avisos:[],eventos:[],campanhas:[],sme:[],fotos:[],ticker:'E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ★ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!'};
+
+function login(){
+  if(document.getElementById('senha').value===SENHA){
+    document.getElementById('login').style.display='none';
+    document.getElementById('app').style.display='block';
+    carregar();
+  }else{
+    document.getElementById('err').textContent='Senha incorreta! Tente de novo.';
+    setTimeout(()=>document.getElementById('err').textContent='',3000);
+  }
+}
+async function carregar(){
+  try{const r=await window.storage.get(KEY,true);if(r)D=JSON.parse(r.value);}catch(e){}
+  renderTudo();
+}
+async function salvar(){
+  const b=document.getElementById('btn-pub');b.disabled=true;b.textContent='💾 SALVANDO...';
+  try{await window.storage.set(KEY,JSON.stringify(D),true);toast('★ PUBLICADO! A TV atualiza em até 30 segundos');}
+  catch(e){toast('⚠️ Erro! Verifique a conexão.');}
+  b.disabled=false;b.innerHTML='🚀 PUBLICAR NA TV';
+}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+function ativ(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('on'));
+  document.getElementById('sec-'+id).classList.add('on');
+  document.getElementById('nav-'+id).classList.add('on');
+}
+
+const SL={pronto:'✓ Pronto!',aguard:'⏳ Em andamento',prof:'📋 Ag. Professor',assin:'✍️ Ag. Assinatura'};
+const CL={fila:'Na fila',processo:'🖨️ Em processo',pronto:'✓ Pronto!'};
+
+function renderTudo(){
+  const ld=document.getElementById('lista-docs');
+  ld.innerHTML=D.docs.length?D.docs.map((d,i)=>`
+    <div class="item">
+      <div class="item-body"><div class="item-titulo">👤 ${d.aluno} — ${d.tipo}</div><div class="item-sub">📅 ${d.data}</div></div>
+      <select class="sel-status" onchange="D.docs[${i}].status=this.value;salvar()">
+        ${['aguard','prof','assin','pronto'].map(v=>`<option value="${v}"${d.status===v?' selected':''}>${SL[v]}</option>`).join('')}
+      </select>
+      <button class="btn-del" onclick="rm('docs',${i})">✕ REMOVER</button>
+    </div>`).join(''):'<div class="vazio-box">📭 NENHUMA SOLICITAÇÃO CADASTRADA</div>';
+
+  document.getElementById('lista-copias').innerHTML=D.copias.length?D.copias.map((c,i)=>`
+    <div class="item">
+      <div class="item-body"><div class="item-titulo">👩‍🏫 ${c.professor} — ${c.descricao}</div><div class="item-sub">${c.turma||''} ${c.qtd?'· '+c.qtd+' cópias':''}</div></div>
+      <select class="sel-status" onchange="D.copias[${i}].status=this.value;salvar()">
+        ${['fila','processo','pronto'].map(v=>`<option value="${v}"${c.status===v?' selected':''}>${CL[v]}</option>`).join('')}
+      </select>
+      <button class="btn-del" onclick="rm('copias',${i})">✕ REMOVER</button>
+    </div>`).join(''):'<div class="vazio-box">📋 FILA VAZIA</div>';
+
+  document.getElementById('lista-avisos').innerHTML=D.avisos.length?D.avisos.map((a,i)=>`
+    <div class="item"><div class="item-body"><div class="item-titulo">${a.titulo}</div><div class="item-sub">${(a.texto||'').substring(0,60)}... · ${a.data||''}</div></div>
+    <button class="btn-del" onclick="rm('avisos',${i})">✕ REMOVER</button></div>`).join(''):'<div class="vazio-box">🗒️ NENHUM AVISO</div>';
+
+  document.getElementById('lista-eventos').innerHTML=D.eventos.length?D.eventos.map((e,i)=>`
+    <div class="item"><div class="item-body"><div class="item-titulo">${e.titulo}</div><div class="item-sub">📅 ${e.data} ${e.desc?'· '+e.desc:''}</div></div>
+    <button class="btn-del" onclick="rm('eventos',${i})">✕ REMOVER</button></div>`).join(''):'<div class="vazio-box">📅 NENHUM EVENTO</div>';
+
+  document.getElementById('lista-campanhas').innerHTML=D.campanhas.length?D.campanhas.map((c,i)=>`
+    <div class="item"><div class="item-body"><div class="item-titulo">${c.emoji||'🎯'} ${c.titulo}</div><div class="item-sub">${(c.desc||'').substring(0,60)}...</div></div>
+    <button class="btn-del" onclick="rm('campanhas',${i})">✕ REMOVER</button></div>`).join(''):'<div class="vazio-box">🎊 NENHUMA CAMPANHA</div>';
+
+  document.getElementById('lista-sme').innerHTML=D.sme.length?D.sme.map((s,i)=>`
+    <div class="item"><div class="item-body"><div class="item-titulo">${s.titulo}</div><div class="item-sub">📅 ${s.data} · ${s.tipo}</div></div>
+    <button class="btn-del" onclick="rm('sme',${i})">✕ REMOVER</button></div>`).join(''):'<div class="vazio-box">🗓️ NENHUMA DATA OFICIAL</div>';
+
+  document.getElementById('lista-fotos').innerHTML=D.fotos.length?D.fotos.map((f,i)=>`
+    <div class="item">
+      <img src="${f.url}" style="width:70px;height:52px;object-fit:cover;border-radius:3px;border:2px solid var(--preto);flex-shrink:0" onerror="this.style.display='none'">
+      <div class="item-body"><div class="item-titulo">${f.leg||'(sem legenda)'}</div><div class="item-sub" style="word-break:break-all;font-size:11px">${f.url.substring(0,50)}...</div></div>
+      <button class="btn-del" onclick="rm('fotos',${i})">✕ REMOVER</button>
+    </div>`).join(''):'<div class="vazio-box">🖼️ NENHUMA FOTO</div>';
+
+  document.getElementById('ticker-txt').value=D.ticker||'';
+}
+
+function hoje(){const n=new Date();return`${String(n.getDate()).padStart(2,'0')}/${String(n.getMonth()+1).padStart(2,'0')}/${n.getFullYear()}`}
+function fd(iso){if(!iso)return hoje();const[a,m,d]=iso.split('-');return`${d}/${m}/${a}`}
+function v(id){return(document.getElementById(id)?.value||'').trim()}
+function cl(ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.value=''})}
+function rm(campo,i){if(!confirm('Remover?'))return;D[campo].splice(i,1);renderTudo();salvar();}
+
+function addDoc(){
+  const aluno=v('d-aluno'),tipo=v('d-tipo');
+  if(!aluno||!tipo){alert('Preencha nome e tipo de documento.');return;}
+  D.docs.push({aluno,tipo,data:fd(v('d-data')),status:v('d-status')});
+  cl(['d-aluno','d-tipo','d-data']);renderTudo();salvar();
+}
+function addCopia(){
+  const professor=v('c-prof'),descricao=v('c-desc');
+  if(!professor||!descricao){alert('Preencha professor e descrição.');return;}
+  D.copias.push({professor,descricao,turma:v('c-turma'),qtd:v('c-qtd'),status:v('c-status')});
+  cl(['c-prof','c-desc','c-turma','c-qtd']);renderTudo();salvar();
+}
+function addAviso(){
+  const titulo=v('a-titulo');
+  if(!titulo){alert('Preencha o título.');return;}
+  D.avisos.push({titulo,texto:v('a-texto'),tipo:v('a-tipo'),data:fd(v('a-data'))});
+  cl(['a-titulo','a-texto','a-data']);renderTudo();salvar();
+}
+function addEvento(){
+  const data=v('e-data'),titulo=v('e-titulo');
+  if(!data||!titulo){alert('Preencha data e título.');return;}
+  D.eventos.push({data,titulo,desc:v('e-desc')});cl(['e-data','e-titulo','e-desc']);renderTudo();salvar();
+}
+function addCampanha(){
+  const titulo=v('cp-titulo');
+  if(!titulo){alert('Preencha o título.');return;}
+  const progresso=parseInt(document.getElementById('cp-prog').value)||0;
+  D.campanhas.push({emoji:v('cp-emoji')||'🎯',titulo,desc:v('cp-desc'),prazo:v('cp-prazo'),meta:true,progresso});
+  cl(['cp-emoji','cp-titulo','cp-desc','cp-prazo']);
+  document.getElementById('cp-prog').value=0;document.getElementById('rvv').textContent='0%';
+  renderTudo();salvar();
+}
+function addSME(){
+  const data=v('sm-data'),titulo=v('sm-titulo');
+  if(!data||!titulo){alert('Preencha data e título.');return;}
+  D.sme.push({data,titulo,tipo:v('sm-tipo')});cl(['sm-data','sm-titulo']);renderTudo();salvar();
+}
+function addFoto(){
+  const url=v('f-url');if(!url){alert('Cole a URL da imagem.');return;}
+  D.fotos.push({url,leg:v('f-leg')});cl(['f-url','f-leg']);renderTudo();salvar();
+}
+function salvarTicker(){D.ticker=document.getElementById('ticker-txt').value;salvar();}
+</script>
+</body>
+</html>
