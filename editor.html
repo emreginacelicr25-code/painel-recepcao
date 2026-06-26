@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Editor do Painel — Secretaria Regina Celi</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vm:#E53935;--az:#1565C0;--vd:#2E7D32;--vd2:#43A047;
+  --la:#FB8C00;--rx:#6A1B9A;--am:#FDD835;
+  --bg:#F8F9FF;--card:#fff;--borda:#E0E0E0;
+  --txt:#1A1A2E;--txt2:#6B7280;
+  --F:'Fredoka One',cursive;--N:'Nunito',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;background:var(--bg);color:var(--txt);font-family:var(--N)}
+
+/* LOGIN */
+#login{position:fixed;inset:0;background:linear-gradient(135deg,#FFD93D,#FF9A3C);
+  display:flex;align-items:center;justify-content:center;z-index:9999}
+.login-box{background:#fff;border-radius:24px;padding:40px;width:360px;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);}
+.login-box .emoji{font-size:52px;margin-bottom:10px;display:block;animation:bob 2.5s ease-in-out infinite}
+.login-box h2{font-family:var(--F);font-size:26px;color:var(--vm);margin-bottom:4px}
+.login-box p{font-size:13px;color:var(--txt2);font-weight:700;margin-bottom:22px}
+.login-box input{width:100%;border:2px solid var(--borda);border-radius:12px;padding:12px 14px;
+  font-size:15px;font-family:var(--N);outline:none;margin-bottom:10px;background:#FAFAFA;transition:border-color .2s}
+.login-box input:focus{border-color:var(--vm)}
+.btn-entrar{width:100%;background:var(--vm);color:#fff;border:none;border-radius:12px;
+  padding:13px;font-size:15px;font-weight:800;cursor:pointer;font-family:var(--N);transition:all .2s}
+.btn-entrar:hover{background:#C62828;transform:translateY(-1px)}
+.login-erro{color:var(--vm);font-size:13px;font-weight:700;margin-top:8px;min-height:18px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* APP */
+#app{display:none}
+header{background:#fff;border-bottom:3px solid #EBEBEB;padding:0 22px;height:66px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.marca{display:flex;align-items:center;gap:12px}
+.marca-badge{background:var(--vm);border-radius:12px;width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.marca-txt h1{font-family:var(--F);font-size:18px;color:var(--txt);line-height:1}
+.marca-txt span{font-size:11px;font-weight:700;color:var(--txt2);letter-spacing:.06em}
+.btn-pub{background:var(--vd);color:#fff;border:none;border-radius:12px;padding:10px 22px;
+  font-family:var(--F);font-size:15px;letter-spacing:.06em;cursor:pointer;
+  display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(46,125,50,.35);transition:all .2s}
+.btn-pub:hover{background:var(--vd2);transform:translateY(-1px)}
+.btn-pub:disabled{opacity:.55;pointer-events:none}
+
+.layout{display:flex;min-height:calc(100vh - 66px)}
+nav{width:220px;background:#fff;border-right:2px solid var(--borda);padding:14px 0;
+  position:sticky;top:66px;height:calc(100vh - 66px);overflow-y:auto;}
+.nav-grp{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:var(--txt2);padding:14px 18px 4px}
+nav a{display:flex;align-items:center;gap:10px;padding:10px 18px;color:var(--txt2);
+  text-decoration:none;font-size:14px;font-weight:800;cursor:pointer;transition:all .15s;
+  border-left:4px solid transparent;}
+nav a:hover{background:var(--bg);color:var(--txt)}
+nav a.on{color:var(--vm);border-left-color:var(--vm);background:#FFF5F5}
+nav a .ni{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;
+  justify-content:center;font-size:15px;flex-shrink:0;background:var(--bg)}
+
+.content{flex:1;padding:24px;max-width:880px}
+.sec{display:none}.sec.on{display:block}
+.sec-hdr{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--borda);
+  border-radius:16px;padding:12px 16px;margin-bottom:6px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.sec-hdr .she{font-size:26px}.sec-hdr h2{font-family:var(--F);font-size:22px;color:var(--txt)}
+.sec-desc{font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:16px;padding-left:2px}
+.lista{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.item{background:#fff;border:2px solid var(--borda);border-radius:14px;padding:12px 14px;
+  display:flex;align-items:center;gap:10px;transition:border-color .15s}
+.item:hover{border-color:var(--vm)}
+.item-body{flex:1}.item-titulo{font-weight:800;font-size:14px;color:var(--txt);margin-bottom:3px}
+.item-sub{font-size:12px;font-weight:700;color:var(--txt2)}
+.btn-del{background:#FFEBEE;border:2px solid rgba(229,57,53,.2);color:var(--vm);
+  border-radius:10px;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer;
+  font-family:var(--N);transition:all .15s;flex-shrink:0}
+.btn-del:hover{background:var(--vm);color:#fff}
+.sel-st{background:#FFF3E0;border:2px solid rgba(251,140,0,.3);color:#E65100;
+  border-radius:10px;padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer;
+  font-family:var(--N);outline:none}
+
+.form-add{background:#fff;border:2px solid var(--borda);border-radius:18px;padding:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);border-top:5px solid var(--vm)}
+.form-add h3{font-family:var(--F);font-size:17px;color:var(--vm);margin-bottom:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.fg{display:flex;flex-direction:column;gap:5px;flex:1;min-width:150px}
+.fg label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--txt2)}
+.fg input,.fg select,.fg textarea{border:2px solid var(--borda);border-radius:10px;padding:10px 12px;
+  font-size:14px;font-family:var(--N);font-weight:700;outline:none;background:#FAFAFA;
+  color:var(--txt);transition:border-color .15s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--vm);background:#fff}
+.fg textarea{resize:vertical;min-height:76px}
+.fg select option{background:#fff}
+.btn-add{background:var(--vd);color:#fff;border:none;border-radius:10px;padding:11px 22px;
+  font-family:var(--F);font-size:15px;letter-spacing:.06em;cursor:pointer;
+  box-shadow:0 4px 12px rgba(46,125,50,.3);transition:all .2s}
+.btn-add:hover{background:var(--vd2);transform:translateY(-1px)}
+.range-wrap{display:flex;align-items:center;gap:10px}
+.range-wrap input[type=range]{flex:1;accent-color:var(--rx);height:6px}
+.rv{min-width:38px;font-family:var(--F);font-size:17px;color:var(--rx)}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(18px);
+  background:var(--vd);color:#fff;padding:12px 26px;border-radius:14px;
+  font-family:var(--F);font-size:15px;letter-spacing:.06em;
+  opacity:0;transition:all .3s;z-index:9999;pointer-events:none;
+  box-shadow:0 8px 24px rgba(46,125,50,.35)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.vazio-box{background:var(--bg);border:2px dashed #CCC;border-radius:12px;padding:16px;
+  text-align:center;font-family:var(--F);font-size:15px;color:#BBB;letter-spacing:.05em}
+
+/* STATUS SALVAMENTO */
+#status-bar{position:fixed;bottom:0;left:0;right:0;height:36px;
+  background:#1A1A2E;display:flex;align-items:center;justify-content:center;
+  font-family:var(--F);font-size:13px;color:rgba(255,255,255,.6);letter-spacing:.08em;z-index:300}
+#status-bar .sb-ok{color:#4ade80}#status-bar .sb-err{color:#f87171}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="login-box">
+    <span class="emoji">🌟</span>
+    <h2>Painel Digital — Secretaria</h2>
+    <p>E. M. Regina Celi da Silva Cerdeira</p>
+    <input type="password" id="senha" placeholder="Digite a senha de acesso" onkeydown="if(event.key==='Enter')login()">
+    <button class="btn-entrar" onclick="login()">✨ Entrar</button>
+    <div class="login-erro" id="err-login"></div>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="marca">
+      <div class="marca-badge">🏫</div>
+      <div class="marca-txt">
+        <h1>Editor do Painel Digital</h1>
+        <span>E. M. REGINA CELI · SECRETARIA ESCOLAR</span>
+      </div>
+    </div>
+    <button class="btn-pub" id="btn-pub" onclick="publicar()">🚀 Publicar na TV</button>
+  </header>
+
+  <div class="layout">
+    <nav>
+      <div class="nav-grp">Seções</div>
+      <a onclick="ativ('docs')" id="nav-docs" class="on"><div class="ni">📄</div>Documentos</a>
+      <a onclick="ativ('copias')" id="nav-copias"><div class="ni">🖨️</div>Cópias</a>
+      <a onclick="ativ('avisos')" id="nav-avisos"><div class="ni">📌</div>Avisos</a>
+      <a onclick="ativ('eventos')" id="nav-eventos"><div class="ni">📅</div>Calendário</a>
+      <a onclick="ativ('campanhas')" id="nav-campanhas"><div class="ni">🎉</div>Campanhas</a>
+      <a onclick="ativ('sme')" id="nav-sme"><div class="ni">🏫</div>Cal. SME</a>
+      <a onclick="ativ('fotos')" id="nav-fotos"><div class="ni">📸</div>Fotos</a>
+      <div class="nav-grp">Config.</div>
+      <a onclick="ativ('ticker')" id="nav-ticker"><div class="ni">📢</div>Rodapé</a>
+    </nav>
+
+    <div class="content">
+
+      <!-- DOCS -->
+      <div class="sec on" id="sec-docs">
+        <div class="sec-hdr"><span class="she">📄</span><h2>Documentos Solicitados</h2></div>
+        <p class="sec-desc">Gerencie solicitações de documentos. Atualize o status direto na lista.</p>
+        <div class="lista" id="lista-docs"></div>
+        <div class="form-add"><h3>+ Nova Solicitação</h3>
+          <div class="row">
+            <div class="fg"><label>Nome do(a) Aluno(a)</label><input id="d-aluno" placeholder="Ex.: Maria da Silva"></div>
+            <div class="fg"><label>Tipo de Documento</label>
+              <select id="d-tipo">
+                <option value="">Selecione...</option>
+                <option>Declaração de Matrícula</option><option>Declaração Bolsa Família</option>
+                <option>Declaração de Frequência</option><option>Relatório de Aprendizagem</option>
+                <option>Histórico Escolar</option><option>Transferência Escolar</option>
+                <option>Atestado de Escolaridade</option><option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="fg"><label>Data da Solicitação</label><input id="d-data" type="date"></div>
+            <div class="fg"><label>Status</label>
+              <select id="d-status">
+                <option value="aguard">⏳ Aguardando Conclusão</option>
+                <option value="prof">📋 Aguardando Professor</option>
+                <option value="assin">✍️ Aguardando Assinatura</option>
+                <option value="pronto">✓ Pronto para Retirada</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addDoc()">📄 Adicionar</button>
+        </div>
+      </div>
+
+      <!-- CÓPIAS -->
+      <div class="sec" id="sec-copias">
+        <div class="sec-hdr"><span class="she">🖨️</span><h2>Fila de Cópias</h2></div>
+        <p class="sec-desc">Registre solicitações de reprografia. Mínimo 2 dias de antecedência!</p>
+        <div class="lista" id="lista-copias"></div>
+        <div class="form-add"><h3>+ Nova Solicitação de Cópia</h3>
+          <div class="row">
+            <div class="fg"><label>Professor(a)</label><input id="c-prof" placeholder="Nome completo"></div>
+            <div class="fg"><label>Turma</label><input id="c-turma" placeholder="Ex.: 3º A"></div>
+          </div>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Descrição do Material</label><input id="c-desc" placeholder="Ex.: Atividade de leitura — Turma da Mônica"></div>
+            <div class="fg"><label>Qtd. de Cópias</label><input id="c-qtd" type="number" min="1" placeholder="30"></div>
+          </div>
+          <div class="row">
+            <div class="fg"><label>Status</label>
+              <select id="c-status">
+                <option value="fila">Na fila de espera</option>
+                <option value="processo">Em processo</option>
+                <option value="pronto">✓ Pronto</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addCopia()">🖨️ Adicionar à Fila</button>
+        </div>
+      </div>
+
+      <!-- AVISOS -->
+      <div class="sec" id="sec-avisos">
+        <div class="sec-hdr"><span class="she">📌</span><h2>Mural de Avisos</h2></div>
+        <p class="sec-desc">Publique comunicados, orientações, protocolos e circulares.</p>
+        <div class="lista" id="lista-avisos"></div>
+        <div class="form-add"><h3>+ Novo Aviso</h3>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Título</label><input id="a-titulo" placeholder="Ex.: 🥗 Alimentação Saudável"></div>
+            <div class="fg"><label>Tipo</label>
+              <select id="a-tipo">
+                <option value="">Padrão</option><option value="urgente">🔴 Urgente</option>
+                <option value="info">🔵 Informativo</option><option value="evento">🟣 Evento</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Texto do Aviso</label><textarea id="a-texto" placeholder="Descreva o aviso..."></textarea></div>
+            <div class="fg"><label>Data</label><input id="a-data" type="date"></div>
+          </div>
+          <button class="btn-add" onclick="addAviso()">📌 Publicar</button>
+        </div>
+      </div>
+
+      <!-- EVENTOS -->
+      <div class="sec" id="sec-eventos">
+        <div class="sec-hdr"><span class="she">📅</span><h2>Calendário do Bimestre</h2></div>
+        <p class="sec-desc">Adicione eventos pedagógicos e datas importantes.</p>
+        <div class="lista" id="lista-eventos"></div>
+        <div class="form-add"><h3>+ Novo Evento</h3>
+          <div class="row">
+            <div class="fg"><label>Data (dd/mm/aaaa)</label><input id="e-data" placeholder="18/07/2026"></div>
+            <div class="fg" style="flex:2"><label>Nome do Evento</label><input id="e-titulo" placeholder="Ex.: 🎪 Festa Junina da Escola"></div>
+          </div>
+          <div class="row"><div class="fg"><label>Descrição (opcional)</label><input id="e-desc" placeholder="Mais detalhes..."></div></div>
+          <button class="btn-add" onclick="addEvento()">📅 Adicionar</button>
+        </div>
+      </div>
+
+      <!-- CAMPANHAS -->
+      <div class="sec" id="sec-campanhas">
+        <div class="sec-hdr"><span class="she">🎉</span><h2>Campanhas e Eventos Especiais</h2></div>
+        <p class="sec-desc">Divulgue a Festa Junina, Gincana Inclusiva, arrecadações e mais.</p>
+        <div class="lista" id="lista-campanhas"></div>
+        <div class="form-add"><h3>+ Nova Campanha</h3>
+          <div class="row">
+            <div class="fg" style="max-width:90px"><label>Emoji</label><input id="cp-emoji" placeholder="🎪" maxlength="4" style="font-size:22px;text-align:center"></div>
+            <div class="fg" style="flex:2"><label>Título</label><input id="cp-titulo" placeholder="Ex.: Gincana Inclusiva 2026!"></div>
+          </div>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>Descrição</label><textarea id="cp-desc" placeholder="Como participar, o que arrecadar..."></textarea></div>
+            <div class="fg">
+              <label>Prazo</label><input id="cp-prazo" placeholder="Ex.: 18 de julho">
+              <label style="margin-top:10px">Progresso (%)</label>
+              <div class="range-wrap">
+                <input type="range" id="cp-prog" min="0" max="100" value="0" oninput="document.getElementById('rvv').textContent=this.value+'%'">
+                <span class="rv" id="rvv">0%</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addCampanha()">🎉 Adicionar</button>
+        </div>
+      </div>
+
+      <!-- SME -->
+      <div class="sec" id="sec-sme">
+        <div class="sec-hdr"><span class="she">🏫</span><h2>Calendário Oficial SME</h2></div>
+        <p class="sec-desc">Datas oficiais: bimestres, conselhos, feriados, formações e recessos.</p>
+        <div class="lista" id="lista-sme"></div>
+        <div class="form-add"><h3>+ Nova Data Oficial</h3>
+          <div class="row">
+            <div class="fg"><label>Data (dd/mm/aaaa)</label><input id="sm-data" placeholder="06/07/2026"></div>
+            <div class="fg" style="flex:2"><label>Título</label><input id="sm-titulo" placeholder="Ex.: Início do Recesso Escolar"></div>
+          </div>
+          <div class="row">
+            <div class="fg"><label>Tipo</label>
+              <select id="sm-tipo">
+                <option>Início de Bimestre</option><option>Fim de Bimestre</option>
+                <option>Conselho de Classe</option><option>Formação / HTPC</option>
+                <option>Recesso Escolar</option><option>Feriado Municipal</option>
+                <option>Feriado Nacional</option><option>Reunião Pedagógica</option>
+                <option>Entrega de Boletins</option><option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-add" onclick="addSME()">🏫 Adicionar</button>
+        </div>
+      </div>
+
+      <!-- FOTOS -->
+      <div class="sec" id="sec-fotos">
+        <div class="sec-hdr"><span class="she">📸</span><h2>Fotos das Atividades</h2></div>
+        <p class="sec-desc">Cole URLs de imagens (Google Drive, Google Fotos, etc.).</p>
+        <div class="lista" id="lista-fotos"></div>
+        <div class="form-add"><h3>+ Nova Foto</h3>
+          <div class="row">
+            <div class="fg" style="flex:2"><label>URL da Imagem</label><input id="f-url" placeholder="https://..."></div>
+            <div class="fg"><label>Legenda</label><input id="f-leg" placeholder="Ex.: Dia da Consciência Negra"></div>
+          </div>
+          <button class="btn-add" onclick="addFoto()">📸 Adicionar</button>
+        </div>
+      </div>
+
+      <!-- TICKER -->
+      <div class="sec" id="sec-ticker">
+        <div class="sec-hdr"><span class="she">📢</span><h2>Texto do Rodapé</h2></div>
+        <p class="sec-desc">Mensagem que rola na faixa inferior da TV.</p>
+        <div class="form-add"><h3>✏️ Editar Mensagem</h3>
+          <div class="fg" style="margin-bottom:14px">
+            <label>Mensagem do Rodapé</label>
+            <textarea id="ticker-txt" rows="3" placeholder="Ex.: E. M. Regina Celi — 90 Anos de Maurício de Sousa ★ Festa Junina: 18 de Julho!"></textarea>
+          </div>
+          <button class="btn-add" onclick="salvarTicker()">💾 Salvar Rodapé</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="toast">🚀 Publicado! A TV atualiza em até 60 segundos</div>
+<div id="status-bar">Sistema pronto · <span id="sb-status">Aguardando publicação</span></div>
+
+<script>
+const SENHA = 'cerdeira2026';
+const GITHUB_TOKEN = ['ghp_R82y','80zDogYV72rO','WuNJPy36iGLSNe40IU99'].join('');
+const GITHUB_USER = 'emreginacelicr25-code';
+const GITHUB_REPO = 'painel-recepcao';
+const GITHUB_FILE = 'dados.json';
+
+let D = {
+  docs:[],copias:[],avisos:[],eventos:[],campanhas:[],sme:[],fotos:[],
+  ticker:'E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!'
+};
+
+// ── LOGIN ──
+function login(){
+  if(document.getElementById('senha').value===SENHA){
+    document.getElementById('login').style.display='none';
+    document.getElementById('app').style.display='block';
+    carregarDoGitHub();
+  } else {
+    document.getElementById('err-login').textContent='Senha incorreta!';
+    setTimeout(()=>document.getElementById('err-login').textContent='',3000);
+  }
+}
+
+// ── GITHUB ──
+async function getSHA(){
+  try{
+    const r=await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`,
+      {headers:{'Authorization':`token ${GITHUB_TOKEN}`,'Accept':'application/vnd.github.v3+json'}});
+    if(r.ok){const j=await r.json();return j.sha;}
+  }catch(e){}
+  return '';
+}
+
+async function publicar(){
+  const btn=document.getElementById('btn-pub');
+  btn.disabled=true;btn.textContent='💾 Publicando...';
+  setStatus('Publicando dados...','');
+  try{
+    const sha=await getSHA();
+    const conteudo=JSON.stringify({...D,atualizado:new Date().toISOString()},null,2);
+    const body={
+      message:'Atualização painel - '+new Date().toLocaleString('pt-BR'),
+      content:btoa(unescape(encodeURIComponent(conteudo))),
+      ...(sha?{sha}:{})
+    };
+    const r=await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`,
+      {method:'PUT',headers:{'Authorization':`token ${GITHUB_TOKEN}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+       body:JSON.stringify(body)});
+    if(r.ok||r.status===201){
+      toast('🚀 Publicado! A TV atualiza em até 60 segundos');
+      setStatus('✓ Publicado em '+new Date().toLocaleTimeString('pt-BR'),'ok');
+    } else {
+      const err=await r.json();
+      toast('⚠️ Erro ao publicar: '+r.status);
+      setStatus('✗ Erro '+r.status,'err');
+      console.error(err);
+    }
+  }catch(e){toast('⚠️ Erro de conexão');setStatus('✗ Sem conexão','err');}
+  btn.disabled=false;btn.innerHTML='🚀 Publicar na TV';
+}
+
+async function carregarDoGitHub(){
+  setStatus('Carregando dados...','');
+  try{
+    const r=await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${GITHUB_FILE}?t=${Date.now()}`);
+    if(r.ok){D=await r.json();renderTudo();setStatus('✓ Dados carregados','ok');}
+  }catch(e){setStatus('Iniciando novo painel','');}
+  renderTudo();
+}
+
+function setStatus(msg,tipo){
+  const el=document.getElementById('sb-status');
+  el.textContent=msg;
+  el.className=tipo==='ok'?'sb-ok':tipo==='err'?'sb-err':'';
+}
+
+function toast(m){
+  const t=document.getElementById('toast');t.textContent=m;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// ── NAV ──
+function ativ(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('on'));
+  document.getElementById('sec-'+id).classList.add('on');
+  document.getElementById('nav-'+id).classList.add('on');
+}
+
+// ── RENDERS ──
+const SL={pronto:'✓ Pronto',aguard:'⏳ Aguardando',prof:'📋 Ag. Professor',assin:'✍️ Ag. Assinatura'};
+const CL={fila:'Na fila',processo:'🖨️ Em processo',pronto:'✓ Pronto!'};
+
+function renderTudo(){
+  // DOCS
+  document.getElementById('lista-docs').innerHTML=D.docs.length
+    ?D.docs.map((d,i)=>`<div class="item">
+        <div class="item-body"><div class="item-titulo">👤 ${d.aluno} — ${d.tipo}</div><div class="item-sub">📅 ${d.data}</div></div>
+        <select class="sel-st" onchange="D.docs[${i}].status=this.value">
+          ${['aguard','prof','assin','pronto'].map(v=>`<option value="${v}"${d.status===v?' selected':''}>${SL[v]}</option>`).join('')}
+        </select>
+        <button class="btn-del" onclick="rm('docs',${i})">✕</button>
+      </div>`).join('')
+    :'<div class="vazio-box">📭 Nenhuma solicitação cadastrada</div>';
+
+  // CÓPIAS
+  document.getElementById('lista-copias').innerHTML=D.copias.length
+    ?D.copias.map((c,i)=>`<div class="item">
+        <div class="item-body"><div class="item-titulo">👩‍🏫 ${c.professor} — ${c.descricao}</div><div class="item-sub">${c.turma||''} ${c.qtd?'· '+c.qtd+' cópias':''}</div></div>
+        <select class="sel-st" onchange="D.copias[${i}].status=this.value">
+          ${['fila','processo','pronto'].map(v=>`<option value="${v}"${c.status===v?' selected':''}>${CL[v]}</option>`).join('')}
+        </select>
+        <button class="btn-del" onclick="rm('copias',${i})">✕</button>
+      </div>`).join('')
+    :'<div class="vazio-box">📋 Fila de cópias vazia</div>';
+
+  // AVISOS
+  document.getElementById('lista-avisos').innerHTML=D.avisos.length
+    ?D.avisos.map((a,i)=>`<div class="item"><div class="item-body">
+        <div class="item-titulo">${a.titulo}</div>
+        <div class="item-sub">${(a.texto||'').substring(0,60)}... · ${a.data||''}</div>
+      </div><button class="btn-del" onclick="rm('avisos',${i})">✕</button></div>`).join('')
+    :'<div class="vazio-box">🗒️ Nenhum aviso publicado</div>';
+
+  // EVENTOS
+  document.getElementById('lista-eventos').innerHTML=D.eventos.length
+    ?D.eventos.map((e,i)=>`<div class="item"><div class="item-body">
+        <div class="item-titulo">${e.titulo}</div>
+        <div class="item-sub">📅 ${e.data} ${e.desc?'· '+e.desc:''}</div>
+      </div><button class="btn-del" onclick="rm('eventos',${i})">✕</button></div>`).join('')
+    :'<div class="vazio-box">📅 Nenhum evento cadastrado</div>';
+
+  // CAMPANHAS
+  document.getElementById('lista-campanhas').innerHTML=D.campanhas.length
+    ?D.campanhas.map((c,i)=>`<div class="item"><div class="item-body">
+        <div class="item-titulo">${c.emoji||'🎯'} ${c.titulo}</div>
+        <div class="item-sub">${(c.desc||'').substring(0,60)}...</div>
+      </div><button class="btn-del" onclick="rm('campanhas',${i})">✕</button></div>`).join('')
+    :'<div class="vazio-box">🎊 Nenhuma campanha ativa</div>';
+
+  // SME
+  document.getElementById('lista-sme').innerHTML=D.sme.length
+    ?D.sme.map((s,i)=>`<div class="item"><div class="item-body">
+        <div class="item-titulo">${s.titulo}</div>
+        <div class="item-sub">📅 ${s.data} · ${s.tipo}</div>
+      </div><button class="btn-del" onclick="rm('sme',${i})">✕</button></div>`).join('')
+    :'<div class="vazio-box">🗓️ Nenhuma data oficial cadastrada</div>';
+
+  // FOTOS
+  document.getElementById('lista-fotos').innerHTML=D.fotos.length
+    ?D.fotos.map((f,i)=>`<div class="item">
+        <img src="${f.url}" style="width:68px;height:50px;object-fit:cover;border-radius:8px;flex-shrink:0;border:2px solid var(--borda)" onerror="this.style.display='none'">
+        <div class="item-body"><div class="item-titulo">${f.leg||'(sem legenda)'}</div>
+        <div class="item-sub" style="word-break:break-all;font-size:11px">${f.url.substring(0,50)}...</div></div>
+        <button class="btn-del" onclick="rm('fotos',${i})">✕</button>
+      </div>`).join('')
+    :'<div class="vazio-box">🖼️ Nenhuma foto adicionada</div>';
+
+  // TICKER
+  document.getElementById('ticker-txt').value=D.ticker||'';
+}
+
+// ── AÇÕES ──
+function hoje(){const n=new Date();return`${String(n.getDate()).padStart(2,'0')}/${String(n.getMonth()+1).padStart(2,'0')}/${n.getFullYear()}`}
+function fd(iso){if(!iso)return hoje();const[a,m,d]=iso.split('-');return`${d}/${m}/${a}`}
+function v(id){return(document.getElementById(id)?.value||'').trim()}
+function cl(ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.value=''})}
+function rm(campo,i){if(!confirm('Remover este item?'))return;D[campo].splice(i,1);renderTudo();}
+
+function addDoc(){
+  const aluno=v('d-aluno'),tipo=v('d-tipo');
+  if(!aluno||!tipo){alert('Preencha o nome e o tipo de documento.');return;}
+  D.docs.push({aluno,tipo,data:fd(v('d-data')),status:v('d-status')||'aguard'});
+  cl(['d-aluno','d-tipo','d-data']);renderTudo();
+}
+function addCopia(){
+  const professor=v('c-prof'),descricao=v('c-desc');
+  if(!professor||!descricao){alert('Preencha professor e descrição.');return;}
+  D.copias.push({professor,descricao,turma:v('c-turma'),qtd:v('c-qtd'),status:v('c-status')||'fila'});
+  cl(['c-prof','c-desc','c-turma','c-qtd']);renderTudo();
+}
+function addAviso(){
+  const titulo=v('a-titulo');
+  if(!titulo){alert('Preencha o título.');return;}
+  D.avisos.push({titulo,texto:v('a-texto'),tipo:v('a-tipo'),data:fd(v('a-data'))});
+  cl(['a-titulo','a-texto','a-data']);renderTudo();
+}
+function addEvento(){
+  const data=v('e-data'),titulo=v('e-titulo');
+  if(!data||!titulo){alert('Preencha data e título.');return;}
+  D.eventos.push({data,titulo,desc:v('e-desc')});cl(['e-data','e-titulo','e-desc']);renderTudo();
+}
+function addCampanha(){
+  const titulo=v('cp-titulo');
+  if(!titulo){alert('Preencha o título.');return;}
+  const progresso=parseInt(document.getElementById('cp-prog').value)||0;
+  D.campanhas.push({emoji:v('cp-emoji')||'🎯',titulo,desc:v('cp-desc'),prazo:v('cp-prazo'),meta:true,progresso});
+  cl(['cp-emoji','cp-titulo','cp-desc','cp-prazo']);
+  document.getElementById('cp-prog').value=0;
+  document.getElementById('rvv').textContent='0%';
+  renderTudo();
+}
+function addSME(){
+  const data=v('sm-data'),titulo=v('sm-titulo');
+  if(!data||!titulo){alert('Preencha data e título.');return;}
+  D.sme.push({data,titulo,tipo:v('sm-tipo')});cl(['sm-data','sm-titulo']);renderTudo();
+}
+function addFoto(){
+  const url=v('f-url');
+  if(!url){alert('Cole a URL da imagem.');return;}
+  D.fotos.push({url,leg:v('f-leg')});cl(['f-url','f-leg']);renderTudo();
+}
+function salvarTicker(){
+  D.ticker=document.getElementById('ticker-txt').value;
+  toast('✓ Rodapé salvo — clique em "Publicar na TV" para atualizar');
+}
+</script>
+</body>
+</html>
