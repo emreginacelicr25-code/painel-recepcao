@@ -5,6 +5,18 @@
       "tipo": "Relatório de Aprendizagem",
       "data": "25/05/2026",
       "status": "pronto"
+    },
+    {
+      "aluno": "Tito Gouveia T. 402",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "29/05/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "Yan Amaral",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "28/05/2026",
+      "status": "aguard"
     }
   ],
   "copias": [],
@@ -14,5 +26,5 @@
   "sme": [],
   "fotos": [],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-26T01:31:02.576Z"
+  "atualizado": "2026-06-26T01:34:30.952Z"
 }
