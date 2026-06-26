@@ -19,12 +19,42 @@
       "status": "aguard"
     }
   ],
-  "copias": [],
-  "avisos": [],
-  "eventos": [],
-  "campanhas": [],
+  "copias": [
+    {
+      "professor": "Luciane",
+      "descricao": "Avaliações",
+      "turma": "301",
+      "qtd": "28",
+      "status": "pronto"
+    }
+  ],
+  "avisos": [
+    {
+      "titulo": "Relatório descritivo",
+      "texto": "Próxima segunda-feira, terça-feira e quarta-feira n vou haverá aula.",
+      "tipo": "info",
+      "data": "29/06/2026"
+    }
+  ],
+  "eventos": [
+    {
+      "data": "18/07/2026",
+      "titulo": "Festa Julina -Turma da Regina",
+      "desc": "Nosso ARRAIÁ iniciará as 10 horas"
+    }
+  ],
+  "campanhas": [
+    {
+      "emoji": "🧆",
+      "titulo": "Doação de pratos",
+      "desc": "Dos um prato típico para a festa julina da escola! Doce ou salgado! Colabore!",
+      "prazo": "11/07/206",
+      "meta": true,
+      "progresso": 14
+    }
+  ],
   "sme": [],
   "fotos": [],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-26T01:34:30.952Z"
+  "atualizado": "2026-06-26T01:42:35.455Z"
 }
