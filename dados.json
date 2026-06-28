@@ -60,16 +60,22 @@
   ],
   "avisos": [
     {
-      "titulo": "Relatório descritivo",
-      "texto": "Próxima segunda-feira, terça-feira e quarta-feira n vou haverá aula.",
-      "tipo": "info",
-      "data": "29/06/2026"
-    },
-    {
       "titulo": "Ponto Facultativo",
       "texto": "Não haverá aula",
       "tipo": "info",
       "data": "29/06/2026"
+    },
+    {
+      "titulo": "Relatório descritivo",
+      "texto": "Próxima terça-feira não vou haverá aula.",
+      "tipo": "info",
+      "data": "30/06/2026"
+    },
+    {
+      "titulo": "Relatório descritivo",
+      "texto": "Próxima quarta-feira não vou haverá aula.",
+      "tipo": "info",
+      "data": "01/07/2026"
     }
   ],
   "eventos": [
@@ -92,5 +98,5 @@
   "sme": [],
   "fotos": [],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-28T18:43:46.717Z"
+  "atualizado": "2026-06-28T18:45:52.477Z"
 }
