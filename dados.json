@@ -142,7 +142,12 @@
       "tipo": "Início de Bimestre"
     }
   ],
-  "fotos": [],
+  "fotos": [
+    {
+      "url": "https://drive.google.com/file/d/1wv9ssMYKX91wwjgwb3gOinj0Mlhm2QfL/view?usp=drivesdk",
+      "leg": "Calendário escolar"
+    }
+  ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-28T18:57:11.140Z"
+  "atualizado": "2026-06-28T18:58:52.637Z"
 }
