@@ -95,8 +95,54 @@
       "progresso": 14
     }
   ],
-  "sme": [],
+  "sme": [
+    {
+      "data": "04/06/2026",
+      "titulo": "Feriado",
+      "tipo": "Feriado Nacional"
+    },
+    {
+      "data": "05/06/2026",
+      "titulo": "Grupo de estudos",
+      "tipo": "Outro"
+    },
+    {
+      "data": "29/06/2026",
+      "titulo": "Relatório descritivo",
+      "tipo": "Outro"
+    },
+    {
+      "data": "30/06/2026",
+      "titulo": "Relatório descritivo",
+      "tipo": "Outro"
+    },
+    {
+      "data": "01/07/2026",
+      "titulo": "Relatório descritivo",
+      "tipo": "Outro"
+    },
+    {
+      "data": "14/07/2026",
+      "titulo": "2° COC",
+      "tipo": "Conselho de Classe"
+    },
+    {
+      "data": "20/07/2026",
+      "titulo": "RE - De 20 a 31/07/2026",
+      "tipo": "Recesso Escolar"
+    },
+    {
+      "data": "03/08/2026",
+      "titulo": "Planejamento Integrado",
+      "tipo": "Reunião Pedagógica"
+    },
+    {
+      "data": "04/08/2026",
+      "titulo": "Retorno das aulas",
+      "tipo": "Início de Bimestre"
+    }
+  ],
   "fotos": [],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-28T18:45:52.477Z"
+  "atualizado": "2026-06-28T18:57:11.140Z"
 }
