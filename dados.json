@@ -1,22 +1,52 @@
 {
   "docs": [
     {
-      "aluno": "Joaquim Farias T.302",
+      "aluno": "Joaquim F. T.302",
       "tipo": "Relatório de Aprendizagem",
       "data": "25/05/2026",
       "status": "pronto"
     },
     {
-      "aluno": "Tito Gouveia T. 402",
+      "aluno": "TITO G. T.402",
       "tipo": "Relatório de Aprendizagem",
       "data": "29/05/2026",
+      "status": "assin"
+    },
+    {
+      "aluno": "Yan A. T.51",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "28/05/2026",
+      "status": "assin"
+    },
+    {
+      "aluno": "Dianna S. T.402",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "01/06/2026",
+      "status": "assin"
+    },
+    {
+      "aluno": "Bernardo L. T.202",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "08/06/2026",
+      "status": "assin"
+    },
+    {
+      "aluno": "Luiz Arthur T.202",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "08/06/2026",
+      "status": "assin"
+    },
+    {
+      "aluno": "Isabela D. T. 41",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "11/06/2026",
       "status": "aguard"
     },
     {
-      "aluno": "Yan Amaral",
+      "aluno": "Bryan M. T.301",
       "tipo": "Relatório de Aprendizagem",
-      "data": "28/05/2026",
-      "status": "aguard"
+      "data": "09/06/2026",
+      "status": "assin"
     }
   ],
   "copias": [
@@ -56,5 +86,5 @@
   "sme": [],
   "fotos": [],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-26T01:42:35.455Z"
+  "atualizado": "2026-06-28T18:42:02.894Z"
 }
