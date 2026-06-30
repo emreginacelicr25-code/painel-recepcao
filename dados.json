@@ -59,6 +59,12 @@
       "tipo": "Transferência Escolar",
       "data": "30/06/2026",
       "status": "aguard"
+    },
+    {
+      "aluno": "Jennyfer Mendes Cunha",
+      "tipo": "Histórico Escolar",
+      "data": "30/06/2026",
+      "status": "aguard"
     }
   ],
   "copias": [
@@ -166,5 +172,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-30T18:00:05.295Z"
+  "atualizado": "2026-06-30T18:02:46.142Z"
 }
