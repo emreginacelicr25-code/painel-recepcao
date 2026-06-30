@@ -53,6 +53,12 @@
       "tipo": "Declaração de Matrícula",
       "data": "30/06/2026",
       "status": "aguard"
+    },
+    {
+      "aluno": "Enzo Fernando Pereira Gonçalves",
+      "tipo": "Transferência Escolar",
+      "data": "30/06/2026",
+      "status": "aguard"
     }
   ],
   "copias": [
@@ -89,6 +95,11 @@
       "data": "18/07/2026",
       "titulo": "Festa Julina -Turma da Regina",
       "desc": "Nosso ARRAIÁ iniciará as 10 horas"
+    },
+    {
+      "data": "03/07/2026",
+      "titulo": "Oficina Literária: Vozes Ancestrais Narrativas Afro-brasileiras e Indígenas",
+      "desc": "A oficina Vozes Ancestrais propõe um mergulho nas narrativas afro-brasileiras e indígenas.2. Público-alvo Jovens e adultos (a partir de 12 anos) Educadores, mediadores de leitura e agentes culturais; Participantes de projetos sociais e comunitários. 15 horas"
     }
   ],
   "campanhas": [
@@ -155,5 +166,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-30T16:40:15.006Z"
+  "atualizado": "2026-06-30T18:00:05.295Z"
 }
