@@ -94,6 +94,12 @@
       "texto": "Próxima quarta-feira não vou haverá aula.",
       "tipo": "info",
       "data": "01/07/2026"
+    },
+    {
+      "titulo": "Agendamentos do dia",
+      "texto": "08h - Havyner T.501\n09h - Rafaela T.501\n10h - Yago T.501\n13h - Caio Martins T.402\n14h - Isaque Santana T.301",
+      "tipo": "info",
+      "data": "03/07/2026"
     }
   ],
   "eventos": [
@@ -172,5 +178,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-30T18:02:46.142Z"
+  "atualizado": "2026-07-03T11:31:04.675Z"
 }
