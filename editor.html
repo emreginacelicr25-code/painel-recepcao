@@ -124,10 +124,21 @@ nav a .ni{width:30px;height:30px;border-radius:8px;display:flex;align-items:cent
     <h2>Painel Digital — Secretaria</h2>
     <p>E. M. Regina Celi da Silva Cerdeira</p>
     <input type="password" id="senha" placeholder="Digite a senha de acesso" onkeydown="if(event.key==='Enter')login()">
+    <input type="password" id="token-gh" placeholder="Token GitHub (ghp_...)" onkeydown="if(event.key==='Enter')login()" style="margin-top:8px">
+    <div style="font-size:11px;color:#888;margin-top:4px;text-align:left">💡 O token fica salvo só neste aparelho. Nas próximas vezes, só a senha é necessária. <a href="#" onclick="esquecerTokenEditor();return false" style="color:#888">Esquecer token deste aparelho</a></div>
     <button class="btn-entrar" onclick="login()">✨ Entrar</button>
     <div class="login-erro" id="err-login"></div>
   </div>
 </div>
+
+<script>
+  (function(){
+    try{
+      const salvo = localStorage.getItem('painel_gh_token');
+      if(salvo) document.addEventListener('DOMContentLoaded', ()=>{ document.getElementById('token-gh').value = salvo; });
+    }catch(e){}
+  })();
+</script>
 
 <div id="app">
   <header>
@@ -193,7 +204,7 @@ nav a .ni{width:30px;height:30px;border-radius:8px;display:flex;align-items:cent
       <!-- CÓPIAS -->
       <div class="sec" id="sec-copias">
         <div class="sec-hdr"><span class="she">🖨️</span><h2>Fila de Cópias</h2></div>
-        <p class="sec-desc">Registre solicitações de reprografia. Mínimo 2 dias de antecedência!</p>
+        <p class="sec-desc">A TV já mostra automaticamente a fila que vem da Central de Triagem/Impressão. Use este formulário só para itens avulsos que não passam por lá.</p>
         <div class="lista" id="lista-copias"></div>
         <div class="form-add"><h3>+ Nova Solicitação de Cópia</h3>
           <div class="row">
@@ -243,7 +254,7 @@ nav a .ni{width:30px;height:30px;border-radius:8px;display:flex;align-items:cent
       <!-- EVENTOS -->
       <div class="sec" id="sec-eventos">
         <div class="sec-hdr"><span class="she">📅</span><h2>Calendário do Bimestre</h2></div>
-        <p class="sec-desc">Adicione eventos pedagógicos e datas importantes.</p>
+        <p class="sec-desc">A TV já mostra automaticamente os eventos da Agenda Escolar 2026. Use este formulário só para avisos rápidos que não estão lá.</p>
         <div class="lista" id="lista-eventos"></div>
         <div class="form-add"><h3>+ Novo Evento</h3>
           <div class="row">
@@ -341,10 +352,10 @@ nav a .ni{width:30px;height:30px;border-radius:8px;display:flex;align-items:cent
 
 <script>
 const SENHA = 'cerdeira2026';
-const GITHUB_TOKEN = ['ghp_R82y','80zDogYV72rO','WuNJPy36iGLSNe40IU99'].join('');
 const GITHUB_USER = 'emreginacelicr25-code';
 const GITHUB_REPO = 'painel-recepcao';
 const GITHUB_FILE = 'dados.json';
+let GITHUB_TOKEN = null; // preenchido no login, nunca fica escrito no código
 
 let D = {
   docs:[],copias:[],avisos:[],eventos:[],campanhas:[],sme:[],fotos:[],
@@ -353,14 +364,30 @@ let D = {
 
 // ── LOGIN ──
 function login(){
-  if(document.getElementById('senha').value===SENHA){
-    document.getElementById('login').style.display='none';
-    document.getElementById('app').style.display='block';
-    carregarDoGitHub();
-  } else {
+  if(document.getElementById('senha').value!==SENHA){
     document.getElementById('err-login').textContent='Senha incorreta!';
     setTimeout(()=>document.getElementById('err-login').textContent='',3000);
+    return;
   }
+  let token = document.getElementById('token-gh').value.trim();
+  const salvo = localStorage.getItem('painel_gh_token');
+  if(!token && salvo) token = salvo;
+  if(!token || !token.startsWith('ghp_')){
+    document.getElementById('err-login').textContent='Cole o token do GitHub (começa com ghp_) na primeira vez.';
+    return;
+  }
+  GITHUB_TOKEN = token;
+  try{ localStorage.setItem('painel_gh_token', token); }catch(e){}
+  document.getElementById('login').style.display='none';
+  document.getElementById('app').style.display='block';
+  carregarDoGitHub();
+}
+
+function esquecerTokenEditor(){
+  if(!confirm('Remover o token salvo neste aparelho? Você vai precisar colar de novo no próximo acesso.')) return;
+  localStorage.removeItem('painel_gh_token');
+  GITHUB_TOKEN = null;
+  alert('Token removido deste aparelho.');
 }
 
 // ── GITHUB ──

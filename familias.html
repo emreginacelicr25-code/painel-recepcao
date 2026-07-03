@@ -660,6 +660,36 @@ const DADOS_URL='https://raw.githubusercontent.com/emreginacelicr25-code/painel-
 const DUR=18;
 let idx=0,pv=0,pt=null;
 
+// ── PRIVACIDADE: nunca exibir o nome completo do aluno no painel público ──
+function nomeCurto(nomeCompleto){
+  if(!nomeCompleto) return '';
+  const partes = String(nomeCompleto).trim().split(/\s+/);
+  const prep = new Set(['da','de','do','das','dos','e']);
+  const primeiro = partes[0];
+  const resto = partes.slice(1).find(p => !prep.has(p.toLowerCase()));
+  return resto ? `${primeiro} ${resto[0].toUpperCase()}.` : primeiro;
+}
+
+// ── INTEGRAÇÃO: Agenda Escolar 2026 (GitHub, somente leitura) ──
+const AGENDA_URL='https://raw.githubusercontent.com/emreginacelicr25-code/agenda-rc-2026/main/dados.json';
+
+function dataBR(iso){
+  if(!iso) return '';
+  const [a,m,d]=iso.split('-');
+  return d && m && a ? `${d}/${m}/${a}` : iso;
+}
+
+async function fetchEventosIntegrados(){
+  try{
+    const r=await fetch(AGENDA_URL+'?t='+Date.now());
+    if(!r.ok) return [];
+    const dd=await r.json();
+    return (dd.eventosCustom||[]).map(e=>({
+      titulo:e.nome, data:dataBR(e.dataInicio), desc:e.descricao||'', _origem:'agenda'
+    }));
+  }catch(e){ console.warn('Agenda indisponível:',e); return []; }
+}
+
 function tick(){
   const n=new Date();
   document.getElementById('rel').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
@@ -694,7 +724,7 @@ function rDocs(d){
   const el=document.getElementById('docs-cards');
   if(!d||!d.length){el.innerHTML='<div class="vazio"><span class="ve">📭</span><span class="vt">Nenhuma solicitação registrada</span></div>';return;}
   const rows=[];for(let i=0;i<Math.min(d.length,6);i+=3)rows.push(d.slice(i,i+3));
-  el.innerHTML=rows.map(row=>`<div class="cards-row">${row.map(r=>{const s=SL[r.status]||{c:'p-la',t:r.status};return`<div class="card" style="--cor-acento:#E53935"><div class="c-nome">👤 ${r.aluno}</div><div class="c-tipo">${r.tipo}</div><div class="c-data">📅 ${r.data}</div><span class="pill ${s.c}">${s.t}</span></div>`;}).join('')}</div>`).join('');
+  el.innerHTML=rows.map(row=>`<div class="cards-row">${row.map(r=>{const s=SL[r.status]||{c:'p-la',t:r.status};return`<div class="card" style="--cor-acento:#E53935"><div class="c-nome">👤 ${nomeCurto(r.aluno)}</div><div class="c-tipo">${r.tipo}</div><div class="c-data">📅 ${r.data}</div><span class="pill ${s.c}">${s.t}</span></div>`;}).join('')}</div>`).join('');
 }
 
 function rCopias(d){
@@ -760,8 +790,14 @@ function render(dd){rDocs(dd.docs);rAvisos(dd.avisos);rCal(dd.eventos);rCamp(dd.
 
 async function load(){
   try{
-    const r=await fetch(DADOS_URL+'?t='+Date.now());
-    if(r.ok){const dd=await r.json();render(dd);}
+    const [r, eventosLive] = await Promise.all([
+      fetch(DADOS_URL+'?t='+Date.now()),
+      fetchEventosIntegrados(),
+    ]);
+    let dd = {};
+    if(r.ok) dd = await r.json();
+    dd.eventos = [...eventosLive, ...(dd.eventos||[])];
+    render(dd);
   }catch(e){console.warn('Erro:',e);}
 }
 
