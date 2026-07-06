@@ -81,6 +81,48 @@
       "turma": "501",
       "qtd": "32",
       "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Atividade de Portugues",
+      "turma": "202 e 402",
+      "qtd": "5",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Atividade Adaptadas",
+      "turma": "402",
+      "qtd": "6",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Caça Palavras",
+      "turma": "402",
+      "qtd": "15",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Atividade de Português",
+      "turma": "",
+      "qtd": "3",
+      "status": "pronto"
+    },
+    {
+      "professor": "Roseme",
+      "descricao": "Minhas Atividades capa",
+      "turma": "202 e 402",
+      "qtd": "40",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Prova copa do mundo",
+      "turma": "202 e 402",
+      "qtd": "30",
+      "status": "pronto"
     }
   ],
   "avisos": [
@@ -201,5 +243,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-07-03T13:02:25.541Z"
+  "atualizado": "2026-07-06T17:49:34.672Z"
 }
