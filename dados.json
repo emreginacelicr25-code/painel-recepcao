@@ -52,19 +52,43 @@
       "aluno": "Enzo F. T 203",
       "tipo": "Declaração de Matrícula",
       "data": "30/06/2026",
-      "status": "aguard"
+      "status": "pronto"
     },
     {
-      "aluno": "Enzo Fernando Pereira Gonçalves",
-      "tipo": "Transferência Escolar",
-      "data": "30/06/2026",
-      "status": "aguard"
+      "aluno": "Arthur M. T.402",
+      "tipo": "Declaração Bolsa Família",
+      "data": "06/07/2026",
+      "status": "pronto"
     },
     {
-      "aluno": "Jennyfer Mendes Cunha",
-      "tipo": "Histórico Escolar",
-      "data": "30/06/2026",
-      "status": "aguard"
+      "aluno": "Lunna T.202",
+      "tipo": "Declaração de Matrícula",
+      "data": "06/07/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Luiza M. T.41",
+      "tipo": "Declaração de Matrícula",
+      "data": "02/07/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Breno F. T.42",
+      "tipo": "Declaração Bolsa Família",
+      "data": "02/07/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Laura T. T.402",
+      "tipo": "Declaração Bolsa Família",
+      "data": "02/07/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Lorenzo T. T.102",
+      "tipo": "Declaração Bolsa Família",
+      "data": "02/07/2026",
+      "status": "pronto"
     }
   ],
   "copias": [
@@ -243,5 +267,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-07-06T17:57:29.337Z"
+  "atualizado": "2026-07-06T18:06:35.357Z"
 }
