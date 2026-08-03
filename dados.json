@@ -143,38 +143,7 @@
       "status": "pronto"
     }
   ],
-  "avisos": [
-    {
-      "titulo": "Ponto Facultativo",
-      "texto": "Não haverá aula",
-      "tipo": "info",
-      "data": "29/06/2026"
-    },
-    {
-      "titulo": "Relatório descritivo",
-      "texto": "Próxima terça-feira não vou haverá aula.",
-      "tipo": "info",
-      "data": "30/06/2026"
-    },
-    {
-      "titulo": "Relatório descritivo",
-      "texto": "Próxima quarta-feira não vou haverá aula.",
-      "tipo": "info",
-      "data": "01/07/2026"
-    },
-    {
-      "titulo": "Agendamentos do dia",
-      "texto": "08h - Havyner T.501\n09h - Rafaela T.501\n10h - Yago T.501\n13h - Caio Martins T.402\n14h - Isaque Santana T.301",
-      "tipo": "info",
-      "data": "03/07/2026"
-    },
-    {
-      "titulo": "Conselho de classe",
-      "texto": "Não haverá aula!",
-      "tipo": "evento",
-      "data": "14/07/2026"
-    }
-  ],
+  "avisos": [],
   "eventos": [
     {
       "data": "18/07/2026",
@@ -192,16 +161,7 @@
       "desc": "Retorno às aulas no dia 4 de agosto de 2026"
     }
   ],
-  "campanhas": [
-    {
-      "emoji": "🧆",
-      "titulo": "Doação de pratos",
-      "desc": "Dos um prato típico para a festa julina da escola! Doce ou salgado! Colabore!",
-      "prazo": "11/07/206",
-      "meta": true,
-      "progresso": 14
-    }
-  ],
+  "campanhas": [],
   "sme": [
     {
       "data": "04/06/2026",
@@ -272,5 +232,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-07-15T13:29:37.839Z"
+  "atualizado": "2026-08-03T01:35:53.389Z"
 }
