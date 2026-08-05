@@ -1,5 +1,12 @@
 {
-  "docs": [],
+  "docs": [
+    {
+      "aluno": "OAO",
+      "tipo": "Declaração Bolsa Família",
+      "data": "04/08/2026",
+      "status": "pronto"
+    }
+  ],
   "copias": [],
   "avisos": [],
   "eventos": [
@@ -18,7 +25,7 @@
   "sme": [],
   "fotos": [],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-05T13:41:08.705Z",
+  "atualizado": "2026-08-05T13:57:05.262Z",
   "gincana": [
     {
       "nome": "Equipe Mônica",
