@@ -2,12 +2,23 @@
   "docs": [],
   "copias": [],
   "avisos": [],
-  "eventos": [],
+  "eventos": [
+    {
+      "data": "03/08/2026",
+      "titulo": "Planejamento Integrado (PI)",
+      "desc": ""
+    },
+    {
+      "data": "04/08/2026",
+      "titulo": "Início das Aulas — 3º Bimestre",
+      "desc": ""
+    }
+  ],
   "campanhas": [],
   "sme": [],
   "fotos": [],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-06-25T00:00:00.000Z",
+  "atualizado": "2026-08-05T13:41:08.705Z",
   "gincana": [
     {
       "nome": "Equipe Mônica",
