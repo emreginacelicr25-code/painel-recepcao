@@ -440,6 +440,45 @@ body::before{
 #loading .lo-e{font-size:88px;animation:char-float 2s ease-in-out infinite}
 #loading .lo-t{font-family:var(--F);font-size:28px;color:#FFD93D;letter-spacing:.08em}
 #loading .lo-s{font-family:var(--N);font-size:14px;font-weight:800;color:rgba(255,255,255,.5)}
+
+/* ══════════════════════════
+   GINCANA INCLUSIVA
+══════════════════════════ */
+#s-gincana{background:linear-gradient(135deg,#1A237E 0%,#283593 50%,#1565C0 100%)}
+.gincana-wrap{flex:1;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.podio{display:flex;align-items:flex-end;justify-content:center;gap:10px;flex-shrink:0;height:132px}
+.podio-item{display:flex;flex-direction:column;align-items:center;gap:3px}
+.podio-char{font-size:34px;line-height:1;animation:char-float 3s ease-in-out infinite}
+.podio-item:nth-child(1) .podio-char{animation-delay:.3s}
+.podio-item:nth-child(3) .podio-char{animation-delay:.6s}
+.podio-nome{font-family:var(--F);font-size:13px;color:#fff;letter-spacing:.02em;text-align:center;line-height:1.1}
+.podio-pts-txt{font-family:var(--F);font-size:11px;color:rgba(255,255,255,.65)}
+.podio-base{border-radius:8px 8px 0 0;width:84px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--F);font-size:26px;color:#fff;border:3px solid rgba(255,255,255,.25);
+  box-shadow:0 4px 16px rgba(0,0,0,.3);text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.podio-item.p1 .podio-base{height:86px;background:linear-gradient(180deg,#FFD700,#FFA000)}
+.podio-item.p2 .podio-base{height:66px;background:linear-gradient(180deg,#90A4AE,#546E7A)}
+.podio-item.p3 .podio-base{height:52px;background:linear-gradient(180deg,#A1887F,#6D4C41)}
+.ranking-lista{flex:1;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.rank-item{background:rgba(255,255,255,.1);border-radius:14px;padding:9px 14px;
+  display:flex;align-items:center;gap:10px;border:2px solid rgba(255,255,255,.14);flex-shrink:0}
+.rank-pos{font-family:var(--F);font-size:20px;color:rgba(255,255,255,.45);min-width:28px;text-align:center;line-height:1}
+.rank-pos.ouro{color:#FFD700;text-shadow:0 0 8px rgba(255,215,0,.5)}
+.rank-pos.prata{color:#CFD8DC}.rank-pos.bronze{color:#BCAAA4}
+.rank-emoji{font-size:26px;line-height:1;flex-shrink:0}
+.rank-info{flex:0 0 auto;min-width:130px}
+.rank-nome{font-family:var(--F);font-size:17px;color:#fff;letter-spacing:.02em;line-height:1}
+.rank-turmas{font-family:var(--N);font-size:11px;font-weight:700;color:rgba(255,255,255,.5);margin-top:2px}
+.rank-barra-wrap{flex:1}
+.rank-barra-bg{height:14px;background:rgba(0,0,0,.25);border-radius:7px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.rank-barra-fill{height:100%;border-radius:7px;transition:width 1.4s cubic-bezier(.34,1.56,.64,1)}
+.rank-pontos{font-family:var(--F);font-size:19px;color:#FFD700;min-width:56px;text-align:right;
+  letter-spacing:.02em;text-shadow:0 0 8px rgba(255,215,0,.4);flex-shrink:0;line-height:1}
+.rank-pts-label{font-family:var(--N);font-size:9px;font-weight:800;color:rgba(255,215,0,.55);display:block}
+.vazio-gincana{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  background:rgba(255,255,255,.07);border:3px dashed rgba(255,255,255,.18);border-radius:18px}
+.vazio-gincana .ve{font-size:58px;animation:pop 3s ease-in-out infinite}
+.vazio-gincana .vt{font-family:var(--F);font-size:20px;color:rgba(255,255,255,.45);letter-spacing:.04em;text-align:center}
 </style>
 
 <!-- Drive fallback -->
@@ -661,6 +700,27 @@ document.addEventListener('DOMContentLoaded',()=>{
     </div>
   </div>
 
+
+  <!-- ── S8 GINCANA INCLUSIVA ── -->
+  <div class="slide" id="s-gincana">
+    <div class="zona-conteudo" style="position:relative">
+      <div class="sec-head">
+        <span class="sec-icon" style="animation:pop 2s ease-in-out infinite">🏆</span>
+        <div class="sec-head-txt">
+          <h2>Gincana Inclusiva</h2>
+          <div class="sec-sub">Placar das equipes — Turma da Mônica na pista!</div>
+        </div>
+      </div>
+      <div class="gincana-wrap" id="gincana-wrap">
+        <div class="vazio-gincana"><span class="ve">🏆</span><span class="vt">Pontuação em breve!</span></div>
+      </div>
+    </div>
+    <div class="zona-char">
+      <div class="balao-fala" style="background:#FFD700;color:#1A1A2E;border-color:#1A1A2E">Que a melhor<br>equipe vença! 🏆</div>
+      <div class="char-ph" style="display:flex"><span class="cpe">🏆</span><span class="cpn">Gincana</span></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- RODAPÉ -->
@@ -673,63 +733,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 <div id="dots"></div>
 
 <script>
-const SLIDES=['s-docs','s-copias','s-mural','s-cal','s-camp','s-sme','s-fotos'];
-const PF_COLS=['#E53935','#1565C0','#2E7D32','#E64A19','#6A1B9A','#0277BD','#F57C00'];
+const SLIDES=['s-docs','s-copias','s-mural','s-cal','s-camp','s-sme','s-fotos','s-gincana'];
+const PF_COLS=['#E53935','#1565C0','#2E7D32','#E64A19','#6A1B9A','#0277BD','#F57C00','#1A237E'];
 const DADOS_URL='https://raw.githubusercontent.com/emreginacelicr25-code/painel-recepcao/main/dados.json';
 const DUR=18;
 let idx=0,pv=0,pt=null;
-
-// ── PRIVACIDADE: nunca exibir o nome completo do aluno no painel público ──
-// Mostra só o primeiro nome + inicial do sobrenome (ex: "Arthur Henrique de Freitas" → "Arthur H.")
-function nomeCurto(nomeCompleto){
-  if(!nomeCompleto) return '';
-  const partes = String(nomeCompleto).trim().split(/\s+/);
-  const prep = new Set(['da','de','do','das','dos','e']);
-  const primeiro = partes[0];
-  const resto = partes.slice(1).find(p => !prep.has(p.toLowerCase()));
-  return resto ? `${primeiro} ${resto[0].toUpperCase()}.` : primeiro;
-}
-
-// ── INTEGRAÇÃO: Fila de Impressão (Central de Triagem — Supabase, somente leitura) ──
-const SU_TRIAGEM='https://wulihgevyzzhysnxzhoy.supabase.co';
-const SK_TRIAGEM='sb_publishable_YTaSssCbwiudqrAoRx2YpA_CrEhc4Sb';
-const ST_IMPR_MAP={aguardando:'fila',imprimindo:'processo',concluido:'pronto'};
-
-async function fetchCopiasIntegradas(){
-  try{
-    const r=await fetch(`${SU_TRIAGEM}/rest/v1/impressoes?status=in.(aguardando,imprimindo)&order=criado_em.asc&limit=8`,
-      {headers:{'apikey':SK_TRIAGEM,'Authorization':'Bearer '+SK_TRIAGEM}});
-    if(!r.ok) return [];
-    const rows=await r.json();
-    return rows.map(i=>({
-      professor:i.professor||'', turma:i.turma||'',
-      descricao:i.arquivo_nome||i.observacoes||'Material de impressão',
-      qtd:i.quantidade_copias||'', status:ST_IMPR_MAP[i.status]||'fila',
-      _origem:'triagem'
-    }));
-  }catch(e){ console.warn('Fila de impressão indisponível:',e); return []; }
-}
-
-// ── INTEGRAÇÃO: Agenda Escolar 2026 (GitHub, somente leitura) ──
-const AGENDA_URL='https://raw.githubusercontent.com/emreginacelicr25-code/agenda-rc-2026/main/dados.json';
-
-function dataBR(iso){
-  if(!iso) return '';
-  const [a,m,d]=iso.split('-');
-  return d && m && a ? `${d}/${m}/${a}` : iso;
-}
-
-async function fetchEventosIntegrados(){
-  try{
-    const r=await fetch(AGENDA_URL+'?t='+Date.now());
-    if(!r.ok) return [];
-    const dd=await r.json();
-    return (dd.eventosCustom||[]).map(e=>({
-      titulo:e.nome, data:dataBR(e.dataInicio), desc:e.descricao||'', _origem:'agenda'
-    }));
-  }catch(e){ console.warn('Agenda indisponível:',e); return []; }
-}
-
 
 function tick(){
   const n=new Date();
@@ -765,7 +773,7 @@ function rDocs(d){
   const el=document.getElementById('docs-cards');
   if(!d||!d.length){el.innerHTML='<div class="vazio"><span class="ve">📭</span><span class="vt">Nenhuma solicitação registrada</span></div>';return;}
   const rows=[];for(let i=0;i<Math.min(d.length,6);i+=3)rows.push(d.slice(i,i+3));
-  el.innerHTML=rows.map(row=>`<div class="cards-row">${row.map(r=>{const s=SL[r.status]||{c:'p-la',t:r.status};return`<div class="card" style="--cor-acento:#E53935"><div class="c-nome">👤 ${nomeCurto(r.aluno)}</div><div class="c-tipo">${r.tipo}</div><div class="c-data">📅 ${r.data}</div><span class="pill ${s.c}">${s.t}</span></div>`;}).join('')}</div>`).join('');
+  el.innerHTML=rows.map(row=>`<div class="cards-row">${row.map(r=>{const s=SL[r.status]||{c:'p-la',t:r.status};return`<div class="card" style="--cor-acento:#E53935"><div class="c-nome">👤 ${r.aluno}</div><div class="c-tipo">${r.tipo}</div><div class="c-data">📅 ${r.data}</div><span class="pill ${s.c}">${s.t}</span></div>`;}).join('')}</div>`).join('');
 }
 
 function rCopias(d){
@@ -821,28 +829,95 @@ function rFotos(d){
   el.innerHTML=rows.map(row=>`<div class="cards-row">${row.map(f=>`<div class="foto"><img src="${f.url}" alt="${f.leg||''}" onerror="this.parentElement.innerHTML='<div class=vazio style=height:100%><span class=ve>🖼️</span></div>'">${f.leg?`<div class="foto-leg">${f.leg}</div>`:''}</div>`).join('')}</div>`).join('');
 }
 
+
+function rGincana(equipes){
+  const el=document.getElementById('gincana-wrap');
+  if(!equipes||!equipes.length){
+    el.innerHTML='<div class="vazio-gincana"><span class="ve">🏆</span><span class="vt">Pontuação em breve!</span></div>';
+    return;
+  }
+  // Ordenar por pontos desc
+  const ord=[...equipes].sort((a,b)=>parseInt(b.pontos||0)-parseInt(a.pontos||0));
+  const max=parseInt(ord[0].pontos||1);
+  const emojis={'Monica':'🐰','Cebolinha':'👦','Magali':'🍉','Cascao':'🐶','Franjinha':'🔬',
+    'Mônica':'🐰','Cascão':'🐶','Turma':'⭐'};
+  const medalhas=['🥇','🥈','🥉'];
+  const classePos=['ouro','prata','bronze'];
+  const coresBarra=[
+    'linear-gradient(90deg,#E53935,#FF7043)',
+    'linear-gradient(90deg,#1565C0,#42A5F5)',
+    'linear-gradient(90deg,#2E7D32,#66BB6A)',
+    'linear-gradient(90deg,#E65100,#FFB300)',
+    'linear-gradient(90deg,#6A1B9A,#AB47BC)',
+    'linear-gradient(90deg,#00838F,#00BCD4)',
+  ];
+
+  // Pódio top 3
+  const top3=ord.slice(0,3);
+  const ordemPodio=top3.length>=2?[top3[1],top3[0],top3[2]||null]:[top3[0]];
+  const posCls=['p2','p1','p3'];
+  const numPodio=['2º','1º','3º'];
+
+  let pHtml='<div class="podio">';
+  ordemPodio.forEach((eq,i)=>{
+    if(!eq)return;
+    const em=emojis[eq.personagem]||'⭐';
+    pHtml+=`<div class="podio-item ${posCls[i]}">
+      <span class="podio-char">${em}</span>
+      <div class="podio-nome">${eq.nome||eq.personagem||'Equipe'}</div>
+      <div class="podio-pts-txt">${eq.pontos||0} pts</div>
+      <div class="podio-base">${numPodio[i]}</div>
+    </div>`;
+  });
+  pHtml+='</div>';
+
+  // Ranking completo
+  let rHtml='<div class="ranking-lista">';
+  ord.forEach((eq,i)=>{
+    const em=emojis[eq.personagem]||'⭐';
+    const pct=Math.round((parseInt(eq.pontos||0)/max)*100);
+    const cor=coresBarra[i%coresBarra.length];
+    const posClass=classePos[i]||'';
+    rHtml+=`<div class="rank-item">
+      <div class="rank-pos ${posClass}">${medalhas[i]||String(i+1)+'º'}</div>
+      <span class="rank-emoji">${em}</span>
+      <div class="rank-info">
+        <div class="rank-nome">${eq.nome||eq.personagem||'Equipe '+(i+1)}</div>
+        <div class="rank-turmas">${eq.turmas||''}</div>
+      </div>
+      <div class="rank-barra-wrap">
+        <div class="rank-barra-bg">
+          <div class="rank-barra-fill" style="width:${pct}%;background:${cor}"></div>
+        </div>
+      </div>
+      <div class="rank-pontos">${eq.pontos||0}<span class="rank-pts-label">pontos</span></div>
+    </div>`;
+  });
+  rHtml+='</div>';
+
+  el.innerHTML=pHtml+rHtml;
+
+  // Animar barras após render
+  setTimeout(()=>{
+    el.querySelectorAll('.rank-barra-fill').forEach(b=>{
+      const w=b.style.width;b.style.width='0%';
+      setTimeout(()=>{b.style.width=w;},50);
+    });
+  },100);
+}
+
 function rTicker(txt){
   const t=document.getElementById('ticker');
   const m=txt||'E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!';
   t.innerHTML=Array(6).fill(`<span>${m} <span class="sep">✦</span></span>`).join('');
 }
 
-function render(dd){rDocs(dd.docs);rCopias(dd.copias);rAvisos(dd.avisos);rCal(dd.eventos);rCamp(dd.campanhas);rSME(dd.sme);rFotos(dd.fotos);rTicker(dd.ticker);}
+function render(dd){rDocs(dd.docs);rCopias(dd.copias);rAvisos(dd.avisos);rCal(dd.eventos);rCamp(dd.campanhas);rSME(dd.sme);rFotos(dd.fotos);rGincana(dd.gincana||[]);rTicker(dd.ticker);}
 
 async function load(){
   try{
-    const [r, copiasLive, eventosLive] = await Promise.all([
-      fetch(DADOS_URL+'?t='+Date.now()),
-      fetchCopiasIntegradas(),
-      fetchEventosIntegrados(),
-    ]);
-    let dd = {};
-    if(r.ok) dd = await r.json();
-    // Mescla: itens vindos automaticamente da Triagem/Agenda primeiro,
-    // seguidos dos itens digitados manualmente no Editor (fallback/extras).
-    dd.copias = [...copiasLive, ...(dd.copias||[])];
-    dd.eventos = [...eventosLive, ...(dd.eventos||[])];
-    render(dd);
+    const r=await fetch(DADOS_URL+'?t='+Date.now());
+    if(r.ok){const dd=await r.json();render(dd);}
   }catch(e){console.warn('Erro:',e);}
 }
 
