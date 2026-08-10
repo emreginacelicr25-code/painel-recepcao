@@ -47,6 +47,18 @@
       "tipo": "Declaração Bolsa Família",
       "data": "03/08/2026",
       "status": "pronto"
+    },
+    {
+      "aluno": "Aurea T.41",
+      "tipo": "Declaração de Matrícula",
+      "data": "10/08/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "Helio T.51",
+      "tipo": "Declaração de Matrícula",
+      "data": "10/08/2026",
+      "status": "aguard"
     }
   ],
   "copias": [
@@ -233,5 +245,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-10T12:19:49.401Z"
+  "atualizado": "2026-08-10T14:57:17.198Z"
 }
