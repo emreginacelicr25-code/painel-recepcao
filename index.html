@@ -769,11 +769,25 @@ function progresso(){
 const SL={pronto:{c:'p-vd',t:'✓ Pronto para Retirar'},aguard:{c:'p-la',t:'⏳ Em Andamento'},prof:{c:'p-az',t:'📋 Aguardando Professor'},assin:{c:'p-rx',t:'✍️ Aguardando Assinatura'}};
 const CL={fila:{c:'p-la',t:'⏳ Na fila'},processo:{c:'p-rx',t:'🖨️ Imprimindo'},pronto:{c:'p-vd',t:'✓ Pronto!'}};
 
-function rDocs(d){
+let docsPages=[],docsPageIdx=0,docsTimer=null;
+
+function renderDocsPage(){
   const el=document.getElementById('docs-cards');
-  if(!d||!d.length){el.innerHTML='<div class="vazio"><span class="ve">📭</span><span class="vt">Nenhuma solicitação registrada</span></div>';return;}
-  const rows=[];for(let i=0;i<Math.min(d.length,6);i+=3)rows.push(d.slice(i,i+3));
+  if(!docsPages.length){el.innerHTML='<div class="vazio"><span class="ve">📭</span><span class="vt">Nenhuma solicitação registrada</span></div>';return;}
+  const pagina=docsPages[docsPageIdx];
+  const rows=[];for(let i=0;i<pagina.length;i+=3)rows.push(pagina.slice(i,i+3));
   el.innerHTML=rows.map(row=>`<div class="cards-row">${row.map(r=>{const s=SL[r.status]||{c:'p-la',t:r.status};return`<div class="card" style="--cor-acento:#E53935"><div class="c-nome">👤 ${r.aluno}</div><div class="c-tipo">${r.tipo}</div><div class="c-data">📅 ${r.data}</div><span class="pill ${s.c}">${s.t}</span></div>`;}).join('')}</div>`).join('');
+}
+
+function rDocs(d){
+  clearInterval(docsTimer);
+  docsPageIdx=0;
+  docsPages=[];
+  if(d&&d.length){for(let i=0;i<d.length;i+=6)docsPages.push(d.slice(i,i+6));}
+  renderDocsPage();
+  if(docsPages.length>1){
+    docsTimer=setInterval(()=>{docsPageIdx=(docsPageIdx+1)%docsPages.length;renderDocsPage();},4000);
+  }
 }
 
 function rCopias(d){
