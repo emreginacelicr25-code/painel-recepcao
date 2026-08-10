@@ -723,7 +723,7 @@ const CL={fila:{c:'p-la',t:'⏳ Na fila'},processo:{c:'p-rx',t:'🖨️ Imprimin
 function rDocs(d){
   const el=document.getElementById('docs-cards');
   if(!d||!d.length){el.innerHTML='<div class="vazio"><span class="ve">📭</span><span class="vt">Nenhuma solicitação registrada</span></div>';return;}
-  const rows=[];for(let i=0;i<Math.min(d.length,6);i+=3)rows.push(d.slice(i,i+3));
+  const rows=[];for(let i=0;i<d.length;i+=3)rows.push(d.slice(i,i+3));
   el.innerHTML=rows.map(row=>`<div class="cards-row">${row.map(r=>{const s=SL[r.status]||{c:'p-la',t:r.status};return`<div class="card" style="--cor-acento:#E53935"><div class="c-nome">👤 ${nomeCurto(r.aluno)}</div><div class="c-tipo">${r.tipo}</div><div class="c-data">📅 ${r.data}</div><span class="pill ${s.c}">${s.t}</span></div>`;}).join('')}</div>`).join('');
 }
 
