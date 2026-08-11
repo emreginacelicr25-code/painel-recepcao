@@ -59,6 +59,12 @@
       "tipo": "Declaração de Matrícula",
       "data": "10/08/2026",
       "status": "aguard"
+    },
+    {
+      "aluno": "Mariah T.41",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "11/08/2026",
+      "status": "aguard"
     }
   ],
   "copias": [
@@ -245,5 +251,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-10T14:57:17.198Z"
+  "atualizado": "2026-08-11T11:32:23.758Z"
 }
