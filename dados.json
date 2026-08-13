@@ -46,7 +46,7 @@
       "aluno": "Mariah T.41",
       "tipo": "Relatório de Aprendizagem",
       "data": "11/08/2026",
-      "status": "aguard"
+      "status": "pronto"
     },
     {
       "aluno": "Rhuan vitor Ex aluno da 501",
@@ -58,7 +58,7 @@
       "aluno": "Gael guimaraes T - 101",
       "tipo": "Declaração Bolsa Família",
       "data": "13/08/2026",
-      "status": "aguard"
+      "status": "pronto"
     },
     {
       "aluno": "Maria Alice T- 201",
@@ -69,6 +69,18 @@
     {
       "aluno": "Isaballa de Oliveira  T= 41",
       "tipo": "Declaração Bolsa Família",
+      "data": "13/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "JOÃO C. T.41",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "13/08/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "ANA LUIZA T.203",
+      "tipo": "Relatório de Aprendizagem",
       "data": "13/08/2026",
       "status": "aguard"
     }
@@ -257,5 +269,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-13T14:27:30.639Z"
+  "atualizado": "2026-08-13T17:46:43.590Z"
 }
