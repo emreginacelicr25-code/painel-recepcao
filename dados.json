@@ -128,19 +128,24 @@
   "avisos": [],
   "eventos": [
     {
-      "data": "18/07/2026",
-      "titulo": "Festa Julina -Turma da Regina",
-      "desc": "Nosso ARRAIÁ iniciará as 10 horas"
+      "data": "03/08/2026",
+      "titulo": "Planejamento Integrado (PI)",
+      "desc": "PI — Planejamento Integrado de retorno do 3º Bimestre."
     },
     {
-      "data": "03/07/2026",
-      "titulo": "Oficina Literária: Vozes Ancestrais Narrativas Afro-brasileiras e Indígenas",
-      "desc": "A oficina Vozes Ancestrais propõe um mergulho nas narrativas afro-brasileiras e indígenas. Público-alvo: Jovens e adultos (a partir de 12 anos), Educadores, mediadores de leitura e agentes culturais. 15 horas"
+      "data": "04/08/2026",
+      "titulo": "Início das Aulas — 3º Bimestre",
+      "desc": "IA — Início das Aulas do 3º Bimestre (03/08–30/09 = 42 dias)."
     },
     {
-      "data": "20/07/2026",
-      "titulo": "Início do Recesso Escolar",
-      "desc": "Retorno às aulas no dia 4 de agosto de 2026"
+      "data": "13/08/2026",
+      "titulo": "Reunião de Responsáveis",
+      "desc": "RR — Reunião de Responsáveis 3º Bimestre."
+    },
+    {
+      "data": "27/08/2026",
+      "titulo": "Grupo de Estudos",
+      "desc": "GE — Grupo de Estudos."
     }
   ],
   "campanhas": [],
@@ -251,5 +256,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-13T12:37:32.835Z"
+  "atualizado": "2026-08-13T12:42:01.825Z"
 }
