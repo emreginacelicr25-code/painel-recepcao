@@ -1,0 +1,279 @@
+{
+  "docs": [
+    {
+      "aluno": "Isabela D. T. 41",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "11/06/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "DOUGLAS M. T.42",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "18/07/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "ISAAC C. T.401",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "01/07/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "ARTHUR F. T.CE7",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "31/07/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "JOAO H. T.402",
+      "tipo": "Declaração Bolsa Família",
+      "data": "05/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "VICTOR G. T.203",
+      "tipo": "Declaração Bolsa Família",
+      "data": "03/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "PEDRO H. T.502",
+      "tipo": "Declaração Bolsa Família",
+      "data": "03/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Mariah T.41",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "11/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Rhuan vitor Ex aluno da 501",
+      "tipo": "Histórico Escolar",
+      "data": "13/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Gael guimaraes T - 101",
+      "tipo": "Declaração Bolsa Família",
+      "data": "13/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Maria Alice T- 201",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "12/08/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "Isaballa de Oliveira  T= 41",
+      "tipo": "Declaração Bolsa Família",
+      "data": "13/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "JOÃO C. T.41",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "13/08/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "ANA LUIZA T.203",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "13/08/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "FELIPE J. T.301",
+      "tipo": "Declaração Bolsa Família",
+      "data": "13/08/2026",
+      "status": "pronto"
+    }
+  ],
+  "copias": [
+    {
+      "professor": "Luciane",
+      "descricao": "Avaliações",
+      "turma": "301",
+      "qtd": "28",
+      "status": "pronto"
+    },
+    {
+      "professor": "Haylane",
+      "descricao": "Avaliação integrada",
+      "turma": "501",
+      "qtd": "32",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Atividade de Portugues",
+      "turma": "202 e 402",
+      "qtd": "5",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Atividade Adaptadas",
+      "turma": "402",
+      "qtd": "6",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Caça Palavras",
+      "turma": "402",
+      "qtd": "15",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Atividade de Português",
+      "turma": "",
+      "qtd": "3",
+      "status": "pronto"
+    },
+    {
+      "professor": "Roseme",
+      "descricao": "Minhas Atividades capa",
+      "turma": "202 e 402",
+      "qtd": "40",
+      "status": "pronto"
+    },
+    {
+      "professor": "Rosemere",
+      "descricao": "Prova copa do mundo",
+      "turma": "202 e 402",
+      "qtd": "30",
+      "status": "pronto"
+    }
+  ],
+  "avisos": [],
+  "eventos": [
+    {
+      "data": "18/07/2026",
+      "titulo": "Festa Julina -Turma da Regina",
+      "desc": "Nosso ARRAIÁ iniciará as 10 horas"
+    },
+    {
+      "data": "03/07/2026",
+      "titulo": "Oficina Literária: Vozes Ancestrais Narrativas Afro-brasileiras e Indígenas",
+      "desc": "A oficina Vozes Ancestrais propõe um mergulho nas narrativas afro-brasileiras e indígenas. Público-alvo: Jovens e adultos (a partir de 12 anos), Educadores, mediadores de leitura e agentes culturais. 15 horas"
+    },
+    {
+      "data": "20/07/2026",
+      "titulo": "Início do Recesso Escolar",
+      "desc": "Retorno às aulas no dia 4 de agosto de 2026"
+    }
+  ],
+  "campanhas": [],
+  "sme": [
+    {
+      "data": "04/06/2026",
+      "titulo": "Feriado",
+      "tipo": "Feriado Nacional"
+    },
+    {
+      "data": "05/06/2026",
+      "titulo": "Grupo de estudos",
+      "tipo": "Outro"
+    },
+    {
+      "data": "29/06/2026",
+      "titulo": "Relatório descritivo",
+      "tipo": "Outro"
+    },
+    {
+      "data": "30/06/2026",
+      "titulo": "Relatório descritivo",
+      "tipo": "Outro"
+    },
+    {
+      "data": "01/07/2026",
+      "titulo": "Relatório descritivo",
+      "tipo": "Outro"
+    },
+    {
+      "data": "14/07/2026",
+      "titulo": "2° COC",
+      "tipo": "Conselho de Classe"
+    },
+    {
+      "data": "20/07/2026",
+      "titulo": "RE - De 20 a 31/07/2026",
+      "tipo": "Recesso Escolar"
+    },
+    {
+      "data": "03/08/2026",
+      "titulo": "Planejamento Integrado",
+      "tipo": "Reunião Pedagógica"
+    },
+    {
+      "data": "04/08/2026",
+      "titulo": "Retorno das aulas",
+      "tipo": "Início de Bimestre"
+    }
+  ],
+  "fotos": [
+    {
+      "url": "https://raw.githubusercontent.com/emreginacelicr25-code/painel-recepcao/main/fotos/1783078880097-1000643192.png",
+      "leg": "Atividades da Escola"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/emreginacelicr25-code/painel-recepcao/main/fotos/1783078945664-1000761478.jpg",
+      "leg": "Aniversário da professora e Circo"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/emreginacelicr25-code/painel-recepcao/main/fotos/1783078999982-1000761243.jpg",
+      "leg": "Aula Passeio CineTeatro"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/emreginacelicr25-code/painel-recepcao/main/fotos/1783079055797-1000761096.jpg",
+      "leg": "Aula passeio CineTeatro"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/emreginacelicr25-code/painel-recepcao/main/fotos/1783079147924-1000760539.jpg",
+      "leg": "Projeto da turma 501"
+    }
+  ],
+  "gincana": [
+    {
+      "nome": "Equipe Mônica",
+      "personagem": "Monica",
+      "turmas": "1ºA / 2ºB / 3ºA",
+      "pontos": "0",
+      "cor": "#E53935"
+    },
+    {
+      "nome": "Equipe Cebolinha",
+      "personagem": "Cebolinha",
+      "turmas": "1ºB / 2ºA / 3ºB",
+      "pontos": "0",
+      "cor": "#1565C0"
+    },
+    {
+      "nome": "Equipe Magali",
+      "personagem": "Magali",
+      "turmas": "1ºC / 2ºC / 4ºA",
+      "pontos": "0",
+      "cor": "#2E7D32"
+    },
+    {
+      "nome": "Equipe Cascão",
+      "personagem": "Cascao",
+      "turmas": "2ºD / 3ºC / 4ºB",
+      "pontos": "0",
+      "cor": "#E65100"
+    },
+    {
+      "nome": "Equipe Franjinha",
+      "personagem": "Franjinha",
+      "turmas": "3ºD / 4ºC / 5ºA",
+      "pontos": "0",
+      "cor": "#6A1B9A"
+    }
+  ],
+  "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
+  "atualizado": "2026-08-13T21:40:09.002Z"
+}
