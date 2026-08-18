@@ -25,33 +25,9 @@
       "status": "aguard"
     },
     {
-      "aluno": "JOAO H. T.402",
-      "tipo": "Declaração Bolsa Família",
-      "data": "05/08/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "VICTOR G. T.203",
-      "tipo": "Declaração Bolsa Família",
-      "data": "03/08/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "PEDRO H. T.502",
-      "tipo": "Declaração Bolsa Família",
-      "data": "03/08/2026",
-      "status": "pronto"
-    },
-    {
       "aluno": "Mariah T.41",
       "tipo": "Relatório de Aprendizagem",
       "data": "11/08/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "Rhuan vitor Ex aluno da 501",
-      "tipo": "Histórico Escolar",
-      "data": "13/08/2026",
       "status": "pronto"
     },
     {
@@ -64,7 +40,7 @@
       "aluno": "Maria Alice T- 201",
       "tipo": "Relatório de Aprendizagem",
       "data": "12/08/2026",
-      "status": "aguard"
+      "status": "assin"
     },
     {
       "aluno": "Isaballa de Oliveira  T= 41",
@@ -88,6 +64,36 @@
       "aluno": "FELIPE J. T.301",
       "tipo": "Declaração Bolsa Família",
       "data": "13/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "José O. T.42",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "14/08/2026",
+      "status": "aguard"
+    },
+    {
+      "aluno": "Yasmim M. T.203",
+      "tipo": "Declaração Bolsa Família",
+      "data": "17/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Kalleb T.101",
+      "tipo": "Declaração Bolsa Família",
+      "data": "17/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Esther T.51",
+      "tipo": "Declaração Bolsa Família",
+      "data": "17/08/2026",
+      "status": "pronto"
+    },
+    {
+      "aluno": "Marcos G. T.301",
+      "tipo": "Declaração Bolsa Família",
+      "data": "18/08/2026",
       "status": "pronto"
     }
   ],
@@ -280,5 +286,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-18T15:37:36.492Z"
+  "atualizado": "2026-08-18T15:42:31.082Z"
 }
