@@ -116,6 +116,13 @@
       "turma": "301",
       "qtd": "23",
       "status": "pronto"
+    },
+    {
+      "professor": "LUCIANE",
+      "descricao": "TESTE DE HISTÓRIA E GEOGRAFIA",
+      "turma": "301",
+      "qtd": "23",
+      "status": "pronto"
     }
   ],
   "avisos": [],
@@ -249,5 +256,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-20T17:28:55.693Z"
+  "atualizado": "2026-08-20T17:39:22.377Z"
 }
