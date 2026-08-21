@@ -223,21 +223,21 @@
       "nome": "Equipe Mônica",
       "personagem": "Monica",
       "turmas": "1ºA / 2ºB / 3ºA",
-      "pontos": "1.620",
+      "pontos": "1620",
       "cor": "#E53935"
     },
     {
       "nome": "Equipe Cebolinha",
       "personagem": "Cebolinha",
       "turmas": "1ºB / 2ºA / 3ºB",
-      "pontos": "1.420",
+      "pontos": "1420",
       "cor": "#1565C0"
     },
     {
       "nome": "Equipe Magali",
       "personagem": "Magali",
       "turmas": "1ºC / 2ºC / 4ºA",
-      "pontos": "1.900",
+      "pontos": "1900",
       "cor": "#2E7D32"
     },
     {
@@ -256,5 +256,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-21T10:16:42.592Z"
+  "atualizado": "2026-08-21T10:17:10.320Z"
 }
