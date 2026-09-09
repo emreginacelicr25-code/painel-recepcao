@@ -134,24 +134,29 @@
   "avisos": [],
   "eventos": [
     {
-      "data": "03/082/026",
-      "titulo": "Planejamento Integrado (PI)",
-      "desc": "PI — Planejamento Integrado de retorno do 3º Bimestre."
+      "data": "10/09/2026",
+      "titulo": "Escolas Resilientes, Alunos Seguros",
+      "desc": "Secretaria Municipal de Defesa Civil"
     },
     {
-      "data": "04/08/2026",
-      "titulo": "Início das Aulas — 3º Bimestre",
-      "desc": "IA — Início das Aulas do 3º Bimestre (03/08–30/09 = 42 dias)."
+      "data": "07/09/2026",
+      "titulo": "Independência do Brasil",
+      "desc": "Feriado"
     },
     {
-      "data": "13/08/2026",
-      "titulo": "Reunião de Responsáveis",
-      "desc": "RR — Reunião de Responsáveis 3º Bimestre."
+      "data": "15/09/2026 até 21/09/2026",
+      "titulo": "Semana de Combate ao Bullying / Prevenção ao Suicídio",
+      "desc": "Leis nº 13.185/2015 e 13.819/2019 — Semana de 15 a 21/09. Culminância: Respeito com toda a Turma da Mônica. O bullying pode ser fator de risco para suicídio/automutilação."
     },
     {
-      "data": "28/08/2026",
-      "titulo": "Grupo de Estudos",
-      "desc": "GE — Grupo de Estudos."
+      "data": "17/09/2026",
+      "titulo": "Relatório Descritivo / Conselho de Classe 3º Bim",
+      "desc": "RD — Relatório Descritivo do 3º Bimestre."
+    },
+    {
+      "data": "28/09/2026",
+      "titulo": "Conselho de Classe 3 (COC 3)",
+      "desc": "COC 3 — Conselho de Classe do 3º Bimestre."
     }
   ],
   "campanhas": [],
@@ -262,5 +267,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-08-21T15:29:59.013Z"
+  "atualizado": "2026-09-09T17:29:44.076Z"
 }
