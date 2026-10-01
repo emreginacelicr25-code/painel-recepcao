@@ -10,18 +10,6 @@
       "aluno": "ISAAC C. T.401",
       "tipo": "Relatório de Aprendizagem",
       "data": "01/07/2026",
-      "status": "aguard"
-    },
-    {
-      "aluno": "Mariah T.41",
-      "tipo": "Relatório de Aprendizagem",
-      "data": "11/08/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "Gael guimaraes T - 101",
-      "tipo": "Declaração Bolsa Família",
-      "data": "13/08/2026",
       "status": "pronto"
     },
     {
@@ -31,120 +19,128 @@
       "status": "assin"
     },
     {
-      "aluno": "Isaballa de Oliveira  T= 41",
-      "tipo": "Declaração Bolsa Família",
-      "data": "13/08/2026",
-      "status": "pronto"
-    },
-    {
       "aluno": "JOÃO C. T.41",
       "tipo": "Relatório de Aprendizagem",
       "data": "13/08/2026",
-      "status": "aguard"
+      "status": "pronto"
     },
     {
       "aluno": "ANA LUIZA T.203",
       "tipo": "Relatório de Aprendizagem",
       "data": "13/08/2026",
-      "status": "aguard"
-    },
-    {
-      "aluno": "FELIPE J. T.301",
-      "tipo": "Declaração Bolsa Família",
-      "data": "13/08/2026",
       "status": "pronto"
     },
     {
-      "aluno": "José O. T.42",
+      "aluno": "Ana Laura T.401",
       "tipo": "Relatório de Aprendizagem",
-      "data": "14/08/2026",
-      "status": "aguard"
-    },
-    {
-      "aluno": "Yasmim M. T.203",
-      "tipo": "Declaração Bolsa Família",
-      "data": "17/08/2026",
+      "data": "08/09/2026",
       "status": "pronto"
     },
     {
-      "aluno": "Kalleb T.101",
-      "tipo": "Declaração Bolsa Família",
-      "data": "17/08/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "Esther T.51",
-      "tipo": "Declaração Bolsa Família",
-      "data": "17/08/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "Marcos G. T.301",
-      "tipo": "Declaração Bolsa Família",
-      "data": "18/08/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "Mirella Piezze T= 502",
-      "tipo": "Declaração Bolsa Família",
-      "data": "20/12/2026",
-      "status": "pronto"
-    },
-    {
-      "aluno": "Lorhenzo G. T.42",
+      "aluno": "Emanuel C. T.52",
       "tipo": "Relatório de Aprendizagem",
-      "data": "20/08/2026",
-      "status": "aguard"
-    },
-    {
-      "aluno": "Helena M. T.41",
-      "tipo": "Relatório de Aprendizagem",
-      "data": "21/08/2026",
-      "status": "aguard"
-    }
-  ],
-  "copias": [
-    {
-      "professor": "LUCIANE",
-      "descricao": "TESTE DE LÍNGUA PORTUGURSA",
-      "turma": "301",
-      "qtd": "23",
+      "data": "31/08/2026",
       "status": "pronto"
     },
     {
-      "professor": "LUCIANE",
-      "descricao": "TESTE DE HISTÓRIA E GEOGRAFIA",
-      "turma": "301",
-      "qtd": "23",
+      "aluno": "Sophia M. T.402",
+      "tipo": "Relatório de Aprendizagem",
+      "data": "25/08/2026",
       "status": "pronto"
     }
   ],
+  "copias": [],
   "avisos": [],
   "eventos": [
     {
-      "data": "10/09/2026",
-      "titulo": "Escolas Resilientes, Alunos Seguros",
-      "desc": "Secretaria Municipal de Defesa Civil"
+      "data": "01/10/2026",
+      "titulo": "COC",
+      "desc": "Não haverá aula"
     },
     {
-      "data": "07/09/2026",
-      "titulo": "Independência do Brasil",
-      "desc": "Feriado"
+      "data": "02/10/2026",
+      "titulo": "Escola disponível para o TRE - eleições 2026",
+      "desc": "Aula normal 1º turno  /    2º turno não haverá aula"
     },
     {
-      "data": "15/09/2026 até 21/09/2026",
-      "titulo": "Semana de Combate ao Bullying / Prevenção ao Suicídio",
-      "desc": "Leis nº 13.185/2015 e 13.819/2019 — Semana de 15 a 21/09. Culminância: Respeito com toda a Turma da Mônica. O bullying pode ser fator de risco para suicídio/automutilação."
+      "data": "05/10/2026",
+      "titulo": "Escola disponível para o TRE - eleições 2026",
+      "desc": "1º turno não haverá aula    /    Aula normal 2º turno"
     },
     {
-      "data": "17/09/2026",
-      "titulo": "Relatório Descritivo / Conselho de Classe 3º Bim",
-      "desc": "RD — Relatório Descritivo do 3º Bimestre."
+      "data": "07/10/2026",
+      "titulo": "Oficina do Brincar",
+      "desc": "Turmas: 101, 201, 102 e 203"
     },
     {
-      "data": "28/09/2026",
-      "titulo": "Conselho de Classe 3 (COC 3)",
-      "desc": "COC 3 — Conselho de Classe do 3º Bimestre."
+      "data": "09/10",
+      "titulo": "Oficina do Brincar",
+      "desc": "Turmas: 202, 301, 103 e 302"
+    },
+    {
+      "data": "12/10/2026",
+      "titulo": "Feriado",
+      "desc": "Não haverá aula"
+    },
+    {
+      "data": "13/10/2026",
+      "titulo": "Cinemão",
+      "desc": "Filmes com vivências sensoriais"
+    },
+    {
+      "data": "14/10/2026",
+      "titulo": "Cinemão",
+      "desc": "Filmes com vivências sensoriais"
+    },
+    {
+      "data": "15/10/2026",
+      "titulo": "Feriado",
+      "desc": "Não haverá aula"
+    },
+    {
+      "data": "16/10/2026",
+      "titulo": "Grupo de Estudos",
+      "desc": "Não haverá aula"
+    },
+    {
+      "data": "19/10/2026",
+      "titulo": "Dia do Brinquedo",
+      "desc": "Cada criança deverá trazer o seu brinquedo preferido."
+    },
+    {
+      "data": "20/10/2026",
+      "titulo": "Dia da Mochila Divertida",
+      "desc": "Os alunos terão que vir com mochila divertidas feita pelos responsáveis"
+    },
+    {
+      "data": "22/10/2026",
+      "titulo": "Caça ao Tesouro na Escola e Fantasia",
+      "desc": "Teremos uma caça ao tesouro em nossa escola e os alunos deverão vir fantasiados"
+    },
+    {
+      "data": "22/10/2026",
+      "titulo": "MasterChef",
+      "desc": "Doce saudável e natural com frutas que serão feitas na escola com os alunos"
+    },
+    {
+      "data": "23/10/2026",
+      "titulo": "Cabelo Divertido",
+      "desc": "Os alunos deverão vir com cabelos divertidos"
+    },
+    {
+      "data": "27/10/2026",
+      "titulo": "Aniversário do Mauricio de Sousa",
+      "desc": ""
+    },
+    {
+      "data": "29/10/2026",
+      "titulo": "Oficina do Brincar",
+      "desc": "Turmas: 401 e 402"
+    },
+    {
+      "data": "30/10/2026",
+      "titulo": "Oficina do Brincar",
+      "desc": "Turmas: 501 e 502"
     }
   ],
   "campanhas": [],
@@ -255,5 +251,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-09-10T18:59:59.098Z"
+  "atualizado": "2026-10-01T13:36:58.879Z"
 }
