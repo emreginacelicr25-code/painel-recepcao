@@ -141,6 +141,16 @@
       "data": "30/10/2026",
       "titulo": "Oficina do Brincar",
       "desc": "Turmas: 501 e 502"
+    },
+    {
+      "data": "29/10/2026",
+      "titulo": "Reunião de Responsáveis",
+      "desc": "1º turno aula e reunião das 08h às 10h                                                                                                                                                       2º turno aula e reunião das 13h às 15h"
+    },
+    {
+      "data": "30/10/2026",
+      "titulo": "Ponto Facultativo",
+      "desc": "Não haverá aula"
     }
   ],
   "campanhas": [],
@@ -251,5 +261,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-10-29T02:06:54.794Z"
+  "atualizado": "2026-10-29T02:09:26.446Z"
 }
