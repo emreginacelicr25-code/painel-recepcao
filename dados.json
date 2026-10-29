@@ -50,7 +50,14 @@
     }
   ],
   "copias": [],
-  "avisos": [],
+  "avisos": [
+    {
+      "titulo": "🎡 FESTA DA ALEGRIA 🎡",
+      "texto": "Prezados responsáveis,\n\nA Equipe Diretiva da E.M. Regina Celi convida todas as crianças para a nossa grande culminância do Mês da Criança! 💛\nNeste dia, a escola vira o parque de diversões do Bairro do Limoeiro (turma da Mônica), com brinquedos, animação e brincadeiras em equipes por cor, para todos os estudantes, de forma inclusiva.\n\n⏰ *Horários*\n1º turno: 8h às 12h\n2º turno: 13h às 17h\n\n📍 *Chegada*\nA entrada será  a partir de 8h (1º turno) e 13h (2º turno).  Pedimos pontualidade para que nenhuma criança perca o início das atividades.\n\n👕 *Como vir*\n• os alunos deverão vir de uniforme, para ajudar no controle de garantia da troca da roupa.\n- Trazer na mochila uma Roupa confortável e chinelo.\n• Protetor solar já aplicado\n- Garrafinha de água \n• Mochila apenas com o essencial. Ela ficará guardada em segurança durante a festa.\n\nAtenção: todo e qualquer material deverá está identificado com o nome turma do aluno.\n\n🍽️ *Alimentação*\nAs refeições serão servidas na escola, no horário de cada turma.\nSe seu filho(a) tem alergia ou restrição alimentar, avise a professora até 03/11.\n\n🚪 *Saída*\nA saída será no horário normal.\nA entrega é feita ao responsável, por ordem das turmas pela professora.\n\n♿ *Inclusão*\nOs estudantes com deficiência participam com mediação, têm espaço de acalmamento e podem usar pulseira no lugar do crachá, se não tolerarem o crachá.\n\n🌧️ *Chuva*\nA festa acontece normalmente. Os espaços serão ajustados, se necessário.\n\n📸 Fotos e vídeos serão feitos respeitando as autorizações de uso de imagem, mas não serão compartilhadas em rede social.\n\nDúvidas: (21) 97738-0286.\n\nContamos com vocês para tornar esse dia inesquecível! 🎈\n_Equipe Diretiva – E.M. Regina Celi da Silva Cerdeira_",
+      "tipo": "evento",
+      "data": "05/11/2026"
+    }
+  ],
   "eventos": [
     {
       "data": "01/10/2026",
@@ -261,5 +268,5 @@
     }
   ],
   "ticker": "E. M. Regina Celi da Silva Cerdeira — 90 Anos de Maurício de Sousa ✦ Gibi como Ferramenta de Alfabetização e Inclusão — Turma da Mônica na Escola!",
-  "atualizado": "2026-10-29T02:09:26.446Z"
+  "atualizado": "2026-10-29T02:11:43.474Z"
 }
